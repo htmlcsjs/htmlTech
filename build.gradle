@@ -1,0 +1,80 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            url = "https://jitpack.io"
+        }
+        maven { url = "https://files.minecraftforge.net/maven" }
+    }
+    dependencies {
+        classpath "com.github.GregTechCE:ForgeGradle:FG_2.3-SNAPSHOT"
+    }
+}
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+
+version = "0.1"
+group = "net.htmlcsjs.htmlTech"
+archivesBaseName = "htmlTech"
+
+sourceCompatibility = targetCompatibility = '1.8'
+compileJava {
+    sourceCompatibility = targetCompatibility = '1.8'
+}
+
+minecraft {
+    version = "1.12.2-14.23.5.2847"
+    runDir = "run"
+    mappings = "stable_39"
+    replace("@VERSION@", version)
+    replaceIn("htmlTech.java")
+}
+
+repositories {
+    maven {
+        url "https://minecraft.curseforge.com/api/maven"
+    }
+    maven {
+        url = "http://chickenbones.net/maven/"
+    }
+    maven {
+        url = "http://dvs1.progwml6.com/files/maven/"
+    }
+    maven { // TOP
+        name 'tterrag maven'
+        url "https://maven.tterrag.com/"
+    }
+}
+
+dependencies {
+    deobfCompile "mezz.jei:jei_1.12.2:+"
+    deobfCompile "gregtechce:gregtech:1.12.2:1.17.0.764"
+    //"provided"(files("libs/gregtech-1.12.2-2.0.0.1180-alpha.jar"))
+    //"provided"(files("libs/CodeChickenLib-1.12.2-3.2.3.358-universal.jar"))
+    //deobfCompile "gregicality:gregicality:1.12.2:0.22.7"
+    deobfCompile("codechicken-lib-1-8:CodeChickenLib-1.12.2:3.2.3.358:universal")
+    deobfCompile "codechicken:ChickenASM:1.12-1.0.2.9"
+    deobfCompile "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.23-16"
+}
+
+jar {
+}
+
+processResources {
+    // this will ensure that this task is redone when the versions change.
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    // replace stuff in mcmod.info, nothing else
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+                
+        // replace version and mcversion
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+        
+    // copy everything else except the mcmod.info
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
