@@ -1,18 +1,19 @@
 package net.htmlcsjs.htmlTech.loaders;
 
-import gregtech.api.unification.material.Material;
-import gregtech.api.unification.material.properties.OreProperty;
-import gregtech.api.unification.material.properties.PropertyKey;
-import gregtech.api.unification.ore.OrePrefix;
-import net.htmlcsjs.htmlTech.htmlTech;
+import static gregtech.api.recipes.RecipeMaps.*;
+import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.ore.OrePrefix.*;
+import static net.htmlcsjs.htmlTech.loaders.HTMaterials.*;
 
 public class HTRecipes {
 
-    public static void registerHandlers() {
-        HTOrePrefix.laser.addProcessingHandler(PropertyKey.ORE, HTRecipes::processLaser);
-    }
-
-    private static void processLaser(OrePrefix orePrefix, Material material, OreProperty oreProperty) {
-        htmlTech.logger.info(material.getUnlocalizedName());
+    public static void init() {
+        MIXER_RECIPES.recipeBuilder().EUt(122880).duration(200)
+                .input(dust, Flerovium, 1)
+                .fluidInputs(Oxygen.getFluid(1000))
+                .input(dust, Phosphorus, 1)
+                .input(dust, Protactinium, 1)
+                .output(dust, FlOPPa, 4)
+                .buildAndRegister();
     }
 }

@@ -27,7 +27,7 @@ minecraft {
     runDir = "run"
     mappings = "stable_39"
     replace("@VERSION@", version)
-    replaceIn("htmlTech.java")
+    replaceIn("HTValues.java")
 }
 
 repositories {

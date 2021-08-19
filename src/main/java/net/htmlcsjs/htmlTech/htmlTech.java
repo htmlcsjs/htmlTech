@@ -1,5 +1,6 @@
 package net.htmlcsjs.htmlTech;
 
+import net.htmlcsjs.htmlTech.loaders.HTMaterials;
 import net.htmlcsjs.htmlTech.proxy.CommonProxy;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -23,6 +24,7 @@ public class htmlTech {
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         logger = event.getModLog();
+        //HTMaterials.register();
     }
 
     @EventHandler
