@@ -29,7 +29,6 @@ public class HTOrePrefix implements IMaterialHandler {
         laserIcon = new MaterialIconType("laser");
 
         laser = new OrePrefix("laser", -1, null, laserIcon, ENABLE_UNIFICATION, material -> material.hasFlag(GENERATE_LASER));
-        laser.setAlternativeOreName(laser.name());
 
         MetaItems.addOrePrefix(laser);
 
