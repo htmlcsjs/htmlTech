@@ -1,9 +1,9 @@
-package net.htmlcsjs.htmlTech.loaders;
+package net.htmlcsjs.htmlTech.api.materials;
 
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static net.htmlcsjs.htmlTech.loaders.HTMaterials.*;
+import static net.htmlcsjs.htmlTech.api.materials.HTMaterials.*;
 
 public class HTRecipes {
 

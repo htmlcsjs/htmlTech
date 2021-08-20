@@ -1,0 +1,11 @@
+metaitem.tool.laser.inspector.name=Laser Inspector
+metaitem.tool.laser.inspector.gui.title=§n§lLaser Inspector
+metaitem.tool.laser.inspector.gui.not_laser=§lThis isnt a laser, please put in a htmlTech Laser
+
+
+htmltech.laser.voltage=Max Voltage: §a%,d §a(%s)
+htmltech.laser.amperage=Max Amperage: §e%,d
+htmltech.laser.efficiency=Atmosphecial Interferance per metre in Oxygen: §c%d§7
+
+item.material.oreprefix.laser=%s Laser
+material.floppa=FlOPPa

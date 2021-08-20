@@ -1,6 +1,5 @@
 package net.htmlcsjs.htmlTech;
 
-import net.htmlcsjs.htmlTech.loaders.HTMaterials;
 import net.htmlcsjs.htmlTech.proxy.CommonProxy;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -19,16 +18,16 @@ public class htmlTech {
     public static Logger logger;
 
     @SidedProxy(modId = HTValues.MODID , serverSide = "net.htmlcsjs.htmlTech.proxy.CommonProxy", clientSide = "net.htmlcsjs.htmlTech.proxy.ClientProxy")
-    public static CommonProxy GregificationProxy;
+    public static CommonProxy proxy;
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         logger = event.getModLog();
-        //HTMaterials.register();
+        proxy.preLoad();
     }
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
-        GregificationProxy.init();
+        proxy.init();
     }
 }
