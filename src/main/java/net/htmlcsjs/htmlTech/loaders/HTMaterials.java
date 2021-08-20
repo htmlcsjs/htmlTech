@@ -26,7 +26,7 @@ public class HTMaterials implements IMaterialHandler {
                 .ingot().fluid().blastTemp(6900)
                 .color(0xac8353).iconSet(SHINY)
                 .components(Flerovium, 1, Oxygen, 1, Phosphorus, 1, Protactinium, 1)
-                .flags(EXT2_METAL, GENERATE_LASER, DECOMPOSITION_BY_CENTRIFUGING)
+                .flags(EXT2_METAL, GENERATE_LASER, DECOMPOSITION_BY_ELECTROLYZING)
                 .build();
     }
 
