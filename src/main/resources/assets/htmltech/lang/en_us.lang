@@ -6,7 +6,9 @@ metaitem.tool.laser.inspector.gui.not_laser=§lThis isnt a laser, please put in 
 htmltech.laser.voltage=Max Voltage: §a%,d §a(%s)
 htmltech.laser.amperage=Max Amperage: §e%,d
 htmltech.laser.efficiency=Atmosphecial Interferance per metre in Oxygen: §c%d§7
-htmltech.machine.laser_hatch_zpm.name=ZPM Laser Hatch
+htmltech.machine.laser_hatch.zpm.name=ZPM Laser Hatch
+htmltech.machine.laser_transformer.name=Laser Transformer
+htmltech.multiblock.laser_transformer.description=TODO
 
 item.material.oreprefix.laser=%s Laser
 material.floppa=FlOPPa
