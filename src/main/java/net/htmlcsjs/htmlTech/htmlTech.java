@@ -1,5 +1,6 @@
 package net.htmlcsjs.htmlTech;
 
+import net.htmlcsjs.htmlTech.api.metatileentity.HTMetaTileEntities;
 import net.htmlcsjs.htmlTech.proxy.CommonProxy;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -24,6 +25,7 @@ public class htmlTech {
     public void preInit(FMLPreInitializationEvent event) {
         logger = event.getModLog();
         proxy.preLoad();
+        HTMetaTileEntities.init();
     }
 
     @EventHandler
