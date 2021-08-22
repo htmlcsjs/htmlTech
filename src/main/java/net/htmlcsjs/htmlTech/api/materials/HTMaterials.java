@@ -29,11 +29,12 @@ public class HTMaterials implements IMaterialHandler {
     public static void register() {
         // New Materials
         FlOPPa = new Material.Builder(21000, "floppa")
-                .fluid().blastTemp(6900)
+                .ingot(32).blastTemp(6900)
                 .color(0xac8353).iconSet(SHINY)
                 .components(Flerovium, 1, Oxygen, 1, Phosphorus, 1, Protactinium, 1)
                 .flags(EXT2_METAL, DECOMPOSITION_BY_ELECTROLYZING)
                 //.properties.setProperty(LASER, new LaserProperties((int) GTValues.V[5], 128, 2))
+                .toolStats(128, 50, 2621440, 128)
                 .build();
 
         // Adding Flags to Materials
