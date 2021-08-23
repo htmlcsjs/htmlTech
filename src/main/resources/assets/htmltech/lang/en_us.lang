@@ -7,8 +7,8 @@ htmltech.laser.voltage=Max Voltage: §a%,d §a(%s)
 htmltech.laser.amperage=Max Amperage: §e%,d
 htmltech.laser.efficiency=Atmosphecial Interferance per metre in Oxygen: §c%d§7
 htmltech.machine.laser_hatch.zpm.name=ZPM Laser Hatch
-htmltech.machine.laser_transformer.name=Laser Transformer
-htmltech.multiblock.laser_transformer.description=TODO
+htmltech.machine.laser_projector.name=Laser Projector
+htmltech.multiblock.laser_projector.description=Projects Lasers using power
 
 item.material.oreprefix.laser=%s Laser
 material.floppa=FlOPPa

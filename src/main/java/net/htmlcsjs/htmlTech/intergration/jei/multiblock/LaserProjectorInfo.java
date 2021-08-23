@@ -14,10 +14,10 @@ import net.minecraft.util.EnumFacing;
 
 import java.util.List;
 
-public class LaserTransformerInfo extends MultiblockInfoPage {
+public class LaserProjectorInfo extends MultiblockInfoPage {
     @Override
     public MultiblockControllerBase getController() {
-        return HTMetaTileEntities.LASER_TRANSFORMER;
+        return HTMetaTileEntities.LASER_PROJECTOR;
     }
 
     @Override
@@ -26,11 +26,11 @@ public class LaserTransformerInfo extends MultiblockInfoPage {
                 .aisle("XXX", "XXX", "XXX")
                 .aisle("XXX", "ECL", "XXX")
                 .aisle("XXX", "XSX", "XXX")
-                .where('S', HTMetaTileEntities.LASER_TRANSFORMER, EnumFacing.WEST)
+                .where('S', HTMetaTileEntities.LASER_PROJECTOR, EnumFacing.SOUTH)
                 .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.PTFE_INERT_CASING))
-                .where('C', MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.DIAMERICIUM_TITANIUM))
+                .where('C', MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.NAQUADAH))
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[7], EnumFacing.WEST)
-                .where('L', HTMetaTileEntities.LASER_HATCH, EnumFacing.WEST)
+                .where('L', HTMetaTileEntities.LASER_HATCH, EnumFacing.EAST)
                 .build();
 
         return Lists.newArrayList(shapeInfo);

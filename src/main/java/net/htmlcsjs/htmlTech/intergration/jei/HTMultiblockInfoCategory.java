@@ -12,7 +12,7 @@ import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategory;
 import mezz.jei.gui.recipes.RecipeLayout;
 import net.htmlcsjs.htmlTech.HTValues;
-import net.htmlcsjs.htmlTech.intergration.jei.multiblock.LaserTransformerInfo;
+import net.htmlcsjs.htmlTech.intergration.jei.multiblock.LaserProjectorInfo;
 import net.minecraft.client.resources.I18n;
 
 public class HTMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoRecipeWrapper> {
@@ -29,7 +29,7 @@ public class HTMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
     public static ImmutableMap<String, MultiblockInfoRecipeWrapper> getRecipes() {
         if (multiblockRecipes == null) {
             multiblockRecipes = new ImmutableMap.Builder<String, MultiblockInfoRecipeWrapper>()
-                    .put("laser_transformer", new MultiblockInfoRecipeWrapper(new LaserTransformerInfo()))
+                    .put("laser_transformer", new MultiblockInfoRecipeWrapper(new LaserProjectorInfo()))
                     .build();
         }
 

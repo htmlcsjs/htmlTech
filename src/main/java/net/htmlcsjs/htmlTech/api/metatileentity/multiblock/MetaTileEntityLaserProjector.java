@@ -1,5 +1,8 @@
 package net.htmlcsjs.htmlTech.api.metatileentity.multiblock;
 
+import codechicken.lib.render.CCRenderState;
+import codechicken.lib.render.pipeline.IVertexOperation;
+import codechicken.lib.vec.Matrix4;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -8,6 +11,7 @@ import gregtech.api.metatileentity.multiblock.MultiblockWithDisplayBase;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.render.ICubeRenderer;
+import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.BlockWireCoil;
@@ -16,13 +20,18 @@ import net.htmlcsjs.htmlTech.api.metatileentity.multiblockpart.HTMultiblockAbili
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
-public class MetaTileEntityLaserTransformer extends MultiblockWithDisplayBase {
+import javax.annotation.Nonnull;
+
+public class MetaTileEntityLaserProjector extends MultiblockWithDisplayBase {
+
+    public boolean isActive;
     public static final MultiblockAbility<?>[] ALLOWED_ABILITIES = new MultiblockAbility[]{
             MultiblockAbility.INPUT_ENERGY, HTMultiblockAbility.OUTPUT_LASER
     };
 
-    public MetaTileEntityLaserTransformer(ResourceLocation metaTileEntityId) {
+    public MetaTileEntityLaserProjector(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId);
+        isActive = true;
     }
 
     @Override
@@ -42,7 +51,7 @@ public class MetaTileEntityLaserTransformer extends MultiblockWithDisplayBase {
                 .where('S', selfPredicate())
                 .where('x', statePredicate(getCasingState()))
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-                .where('C', statePredicate(MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.DIAMERICIUM_TITANIUM)))
+                .where('C', statePredicate(MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.NAQUADAH)))
                 .build();
     }
 
@@ -53,10 +62,22 @@ public class MetaTileEntityLaserTransformer extends MultiblockWithDisplayBase {
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder metaTileEntityHolder) {
-        return new MetaTileEntityLaserTransformer(this.metaTileEntityId);
+        return new MetaTileEntityLaserProjector(this.metaTileEntityId);
     }
 
     protected IBlockState getCasingState() {
         return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.PTFE_INERT_CASING);
+    }
+
+    @Nonnull
+    @Override
+    protected OrientedOverlayRenderer getFrontOverlay() {
+        return Textures.LASER_ENGRAVER_OVERLAY;
+    }
+
+    @Override
+    public void renderMetaTileEntity(CCRenderState renderState, Matrix4 translation, IVertexOperation[] pipeline) {
+        super.renderMetaTileEntity(renderState, translation, pipeline);
+        this.getFrontOverlay().render(renderState, translation, pipeline, this.getFrontFacing(), this.isStructureFormed());
     }
 }
