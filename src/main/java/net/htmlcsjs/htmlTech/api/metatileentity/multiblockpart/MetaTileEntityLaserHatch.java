@@ -14,6 +14,7 @@ import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.render.SimpleOverlayRenderer;
 import gregtech.api.render.Textures;
 import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityMultiblockPart;
+import net.htmlcsjs.htmlTech.api.HTTextures;
 import net.htmlcsjs.htmlTech.htmlTech;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
@@ -68,9 +69,7 @@ public class MetaTileEntityLaserHatch extends MetaTileEntityMultiblockPart imple
     public void renderMetaTileEntity(CCRenderState renderState, Matrix4 translation, IVertexOperation[] pipeline) {
         super.renderMetaTileEntity(renderState, translation, pipeline);
         if (this.shouldRenderOverlay()) {
-            SimpleOverlayRenderer renderer = Textures.PIPE_OUT_OVERLAY;
-            renderer.renderSided(this.getFrontFacing(), renderState, translation, pipeline);
-            SimpleOverlayRenderer overlay = Textures.ITEM_HATCH_OUTPUT_OVERLAY;
+            SimpleOverlayRenderer overlay = HTTextures.LASER_OUTPUT;
             overlay.renderSided(this.getFrontFacing(), renderState, translation, pipeline);
         }
     }
