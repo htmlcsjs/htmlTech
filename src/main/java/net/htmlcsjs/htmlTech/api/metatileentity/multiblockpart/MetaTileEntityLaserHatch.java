@@ -14,6 +14,8 @@ import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.render.SimpleOverlayRenderer;
 import gregtech.api.render.Textures;
 import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityMultiblockPart;
+import net.htmlcsjs.htmlTech.api.HTTextures;
+import net.htmlcsjs.htmlTech.htmlTech;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.items.ItemStackHandler;
@@ -22,10 +24,12 @@ import java.util.List;
 
 public class MetaTileEntityLaserHatch extends MetaTileEntityMultiblockPart implements IMultiblockAbilityPart<IEnergyContainer> {
     private final ItemStackHandler laserInventory;
+    private boolean pathChecked;
 
     public MetaTileEntityLaserHatch(ResourceLocation metaTileEntityId, int tier) {
         super(metaTileEntityId, tier);
         laserInventory = new ItemStackHandler(1);
+        pathChecked = false;
     }
 
     @Override
@@ -51,12 +55,21 @@ public class MetaTileEntityLaserHatch extends MetaTileEntityMultiblockPart imple
     }
 
     @Override
+    public void update() {
+        super.update();
+        if (isAttachedToMultiBlock() && !pathChecked) {
+            htmlTech.logger.info("*path checking*");
+            pathChecked = true;
+        } else if (!isAttachedToMultiBlock()) {
+            pathChecked = false;
+        }
+    }
+
+    @Override
     public void renderMetaTileEntity(CCRenderState renderState, Matrix4 translation, IVertexOperation[] pipeline) {
         super.renderMetaTileEntity(renderState, translation, pipeline);
         if (this.shouldRenderOverlay()) {
-            SimpleOverlayRenderer renderer = Textures.PIPE_OUT_OVERLAY;
-            renderer.renderSided(this.getFrontFacing(), renderState, translation, pipeline);
-            SimpleOverlayRenderer overlay = Textures.ITEM_HATCH_OUTPUT_OVERLAY;
+            SimpleOverlayRenderer overlay = HTTextures.LASER_OUTPUT;
             overlay.renderSided(this.getFrontFacing(), renderState, translation, pipeline);
         }
     }
