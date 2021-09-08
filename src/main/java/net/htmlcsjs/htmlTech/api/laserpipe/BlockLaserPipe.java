@@ -37,7 +37,7 @@ public class BlockLaserPipe extends BlockSimplePipe<LaserPipeType, EmptyNodeData
 
     @Override
     public TileEntityPipeBase<LaserPipeType, EmptyNodeData> createNewTileEntity(boolean b) {
-        return new TileEntityLaserPipe();
+        return b ? new TileEntityLaserPipeTickable() : new TileEntityLaserPipe();
     }
 
     @Override
@@ -60,6 +60,16 @@ public class BlockLaserPipe extends BlockSimplePipe<LaserPipeType, EmptyNodeData
         for(LaserPipeType type : LaserPipeType.values()) {
             items.add(new ItemStack(this, 1, type.ordinal()));
         }
+    }
+
+    @Override
+    public boolean canConnect(IPipeTile<LaserPipeType, EmptyNodeData> selfTile, EnumFacing facing) {
+        EnumFacing opposite = facing.getOpposite();
+        for(EnumFacing facing1 : EnumFacing.values()) {
+            if(facing1 != opposite && selfTile.isConnectionOpenAny(facing1))
+                return false;
+        }
+        return super.canConnect(selfTile, facing);
     }
 
     @Override

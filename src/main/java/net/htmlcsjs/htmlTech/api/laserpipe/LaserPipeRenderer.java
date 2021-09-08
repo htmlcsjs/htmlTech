@@ -85,8 +85,7 @@ public class LaserPipeRenderer implements ICCBlockRenderer, IItemRenderer {
 
     @Override
     public void renderItem(ItemStack rawItemStack, ItemCameraTransforms.TransformType transformType) {
-        ItemStack stack = rawItemStack;//ModCompatibility.getRealItemStack(rawItemStack);
-        GTLog.logger.info("Rendering laser pipe item");
+        ItemStack stack = ModCompatibility.getRealItemStack(rawItemStack);
         if (stack.getItem() instanceof ItemBlockLaserPipe) {
             CCRenderState renderState = CCRenderState.instance();
             GlStateManager.enableBlend();
@@ -97,7 +96,7 @@ public class LaserPipeRenderer implements ICCBlockRenderer, IItemRenderer {
             if (pipeType != null) {
                 int connections = 1 << EnumFacing.SOUTH.getIndex() | 1 << EnumFacing.NORTH.getIndex() | 1 << 6 + EnumFacing.SOUTH.getIndex() | 1 << 6 + EnumFacing.NORTH.getIndex();
                 connections |= 4096;
-                this.renderPipeBlock(pipeType, IPipeTile.DEFAULT_INSULATION_COLOR, renderState, new IVertexOperation[0], connections);
+                this.renderPipeBlock(pipeType, 0xFFFFFF, renderState, new IVertexOperation[0], connections);
             }
 
             renderState.draw();
@@ -116,6 +115,7 @@ public class LaserPipeRenderer implements ICCBlockRenderer, IItemRenderer {
         TileEntityLaserPipe tileEntityPipe = (TileEntityLaserPipe) blockFluidPipe.getPipeTileEntity(world, pos);
 
         if (tileEntityPipe == null) {
+            GTLog.logger.info("Tile is null");
             return false;
         }
 

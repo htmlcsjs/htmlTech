@@ -40,8 +40,6 @@ public class ClientProxy extends CommonProxy {
                     return LaserPipeRenderer.MODEL_LOCATION;
                 }
             });
-        }
-        for (BlockLaserPipe pipe : LASER_PIPES) {
             ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(pipe), stack -> LaserPipeRenderer.MODEL_LOCATION);
         }
     }
