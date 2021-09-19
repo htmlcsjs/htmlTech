@@ -26,7 +26,8 @@ public class MetaTileEntityLaserProjector extends MultiblockWithDisplayBase {
 
     public boolean isActive;
     public static final MultiblockAbility<?>[] ALLOWED_ABILITIES = new MultiblockAbility[]{
-            MultiblockAbility.INPUT_ENERGY, HTMultiblockAbility.OUTPUT_LASER
+            MultiblockAbility.INPUT_ENERGY, HTMultiblockAbility.OUTPUT_LASER,
+            MultiblockAbility.MAINTENANCE_HATCH
     };
 
     public MetaTileEntityLaserProjector(ResourceLocation metaTileEntityId) {
@@ -43,9 +44,9 @@ public class MetaTileEntityLaserProjector extends MultiblockWithDisplayBase {
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("xxx", "xXx", "xxx")
-                .aisle("xXx", "XCX", "xXx")
-                .aisle("xxx", "xSx", "xxx")
+                .aisle("xXx", "XXX", "xXx")
+                .aisle("XXX", "XCX", "XXX")
+                .aisle("xXx", "XSX", "xXx")
                 .setAmountLimit('C', 1, 1)
                 .setAmountAtLeast('x', 10)
                 .where('S', selfPredicate())
