@@ -1,6 +1,7 @@
 package net.htmlcsjs.htmlTech.api.metatileentity;
 
 import gregtech.api.GregTechAPI;
+import gregtech.common.metatileentities.MetaTileEntities;
 import net.htmlcsjs.htmlTech.HTValues;
 import net.htmlcsjs.htmlTech.api.metatileentity.multiblock.MetaTileEntityLaserProjector;
 import net.htmlcsjs.htmlTech.api.metatileentity.multiblockpart.MetaTileEntityLaserHatch;
@@ -19,8 +20,8 @@ public class HTMetaTileEntities {
     public static void init() {
         htmlTech.logger.info("registering htmlTech Tile Entities");
 
-        LASER_HATCH = GregTechAPI.registerMetaTileEntity(9000, new MetaTileEntityLaserHatch(location("laser_hatch.zpm"), 7));
-        LASER_PROJECTOR = GregTechAPI.registerMetaTileEntity(9001, new MetaTileEntityLaserProjector(location("laser_projector")));
+        LASER_HATCH = MetaTileEntities.registerMetaTileEntity(9000, new MetaTileEntityLaserHatch(location("laser_hatch.zpm"), 7));
+        LASER_PROJECTOR = MetaTileEntities.registerMetaTileEntity(9001, new MetaTileEntityLaserProjector(location("laser_projector")));
     }
 
     public static ResourceLocation location(String name) {
