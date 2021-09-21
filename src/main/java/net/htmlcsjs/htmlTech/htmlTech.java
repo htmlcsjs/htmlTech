@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.Logger;
 
 @Mod(modid = htmlTech.MODID, name = htmlTech.NAME, version = htmlTech.VERSION,
-        dependencies = "required-after:gregtech@[1.0,);")
+        dependencies = "required-after:gregtech@[2.0,);")
 public class htmlTech {
     public static final String MODID = HTValues.MODID;
     public static final String NAME = HTValues.MOD_NAME;
