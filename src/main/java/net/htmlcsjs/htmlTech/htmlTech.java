@@ -1,5 +1,6 @@
 package net.htmlcsjs.htmlTech;
 
+import net.htmlcsjs.htmlTech.api.blocks.MetaBlocks;
 import net.htmlcsjs.htmlTech.api.metatileentity.HTMetaTileEntities;
 import net.htmlcsjs.htmlTech.proxy.CommonProxy;
 import net.minecraftforge.fml.common.Mod;
@@ -18,14 +19,15 @@ public class htmlTech {
 
     public static Logger logger;
 
-    @SidedProxy(modId = HTValues.MODID , serverSide = "net.htmlcsjs.htmlTech.proxy.CommonProxy", clientSide = "net.htmlcsjs.htmlTech.proxy.ClientProxy")
+    @SidedProxy(modId = HTValues.MODID, serverSide = "net.htmlcsjs.htmlTech.proxy.CommonProxy", clientSide = "net.htmlcsjs.htmlTech.proxy.ClientProxy")
     public static CommonProxy proxy;
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         logger = event.getModLog();
-        proxy.preLoad();
         HTMetaTileEntities.init();
+        MetaBlocks.init();
+        proxy.preLoad();
     }
 
     @EventHandler
