@@ -14,6 +14,7 @@ import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.render.SimpleOverlayRenderer;
 import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityMultiblockPart;
 import net.htmlcsjs.htmlTech.api.HTTextures;
+import net.htmlcsjs.htmlTech.api.capability.ILaserContainer;
 import net.htmlcsjs.htmlTech.htmlTech;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
@@ -21,7 +22,7 @@ import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.List;
 
-public class MetaTileEntityLaserHatch extends MetaTileEntityMultiblockPart implements IMultiblockAbilityPart<IEnergyContainer> {
+public class MetaTileEntityLaserHatch extends MetaTileEntityMultiblockPart implements IMultiblockAbilityPart<ILaserContainer> {
     private final ItemStackHandler laserInventory;
     private boolean pathChecked;
 
@@ -44,12 +45,12 @@ public class MetaTileEntityLaserHatch extends MetaTileEntityMultiblockPart imple
     }
 
     @Override
-    public MultiblockAbility<IEnergyContainer> getAbility() {
+    public MultiblockAbility<ILaserContainer> getAbility() {
         return HTMultiblockAbility.OUTPUT_LASER;
     }
 
     @Override
-    public void registerAbilities(List<IEnergyContainer> list) {
+    public void registerAbilities(List<ILaserContainer> list) {
 
     }
 

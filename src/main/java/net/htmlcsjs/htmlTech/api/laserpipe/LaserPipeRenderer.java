@@ -18,10 +18,8 @@ import gregtech.api.GTValues;
 import gregtech.api.cover.ICoverable;
 import gregtech.api.pipenet.block.simple.EmptyNodeData;
 import gregtech.api.pipenet.tile.IPipeTile;
-import gregtech.api.util.GTLog;
+import gregtech.api.util.GTUtility;
 import gregtech.api.util.ModCompatibility;
-import gregtech.common.pipelike.itempipe.ItemBlockItemPipe;
-import gregtech.common.render.ItemPipeRenderer;
 import net.htmlcsjs.htmlTech.htmlTech;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -59,7 +57,7 @@ public class LaserPipeRenderer implements ICCBlockRenderer, IItemRenderer {
     private final Map<LaserPipeType, PipeTextureInfo> pipeTextures = new HashMap();
 
     public static void preInit() {
-        GTLog.logger.info("initializing laser pipe renderer");
+        htmlTech.logger.info("initializing laser pipe renderer");
         BLOCK_RENDER_TYPE = BlockRenderingRegistry.createRenderType("ht_laser_pipe");
         BlockRenderingRegistry.registerRenderer(BLOCK_RENDER_TYPE, INSTANCE);
         MinecraftForge.EVENT_BUS.register(INSTANCE);
@@ -79,7 +77,7 @@ public class LaserPipeRenderer implements ICCBlockRenderer, IItemRenderer {
 
     @SubscribeEvent
     public void onModelsBake(ModelBakeEvent event) {
-        GTLog.logger.info("registering laser pipe model");
+        htmlTech.logger.info("registering laser pipe model");
         event.getModelRegistry().putObject(MODEL_LOCATION, this);
     }
 
@@ -115,7 +113,7 @@ public class LaserPipeRenderer implements ICCBlockRenderer, IItemRenderer {
         TileEntityLaserPipe tileEntityPipe = (TileEntityLaserPipe) blockFluidPipe.getPipeTileEntity(world, pos);
 
         if (tileEntityPipe == null) {
-            GTLog.logger.info("Tile is null");
+            htmlTech.logger.info("Tile is null");
             return false;
         }
 
@@ -124,7 +122,7 @@ public class LaserPipeRenderer implements ICCBlockRenderer, IItemRenderer {
         int connectedSidesMap = blockFluidPipe.getVisualConnections(tileEntityPipe);
 
         if (fluidPipeType != null) {
-            GTLog.logger.info("Rendering laser pipe block");
+            htmlTech.logger.debug("Rendering laser pipe block");
             BlockRenderLayer renderLayer = MinecraftForgeClient.getRenderLayer();
 
             if (renderLayer == BlockRenderLayer.CUTOUT)
@@ -137,7 +135,7 @@ public class LaserPipeRenderer implements ICCBlockRenderer, IItemRenderer {
     }
 
     public void renderPipeBlock(LaserPipeType pipeType, int insulationColor, CCRenderState state, IVertexOperation[] pipeline, int connectMask) {
-        int pipeColor = insulationColor;
+        int pipeColor = GTUtility.convertRGBtoOpaqueRGBA_CL(insulationColor);
         float thickness = pipeType.getThickness();
         ColourMultiplier multiplier = new ColourMultiplier(pipeColor);
         PipeTextureInfo textureInfo = this.pipeTextures.get(pipeType);

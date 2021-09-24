@@ -63,16 +63,6 @@ public class BlockLaserPipe extends BlockSimplePipe<LaserPipeType, EmptyNodeData
     }
 
     @Override
-    public boolean canConnect(IPipeTile<LaserPipeType, EmptyNodeData> selfTile, EnumFacing facing) {
-        EnumFacing opposite = facing.getOpposite();
-        for(EnumFacing facing1 : EnumFacing.values()) {
-            if(facing1 != opposite && selfTile.isConnectionOpenAny(facing1))
-                return false;
-        }
-        return super.canConnect(selfTile, facing);
-    }
-
-    @Override
     public boolean canPipeConnectToBlock(IPipeTile iPipeTile, EnumFacing enumFacing, @Nullable TileEntity tileEntity) {
         return tileEntity != null && tileEntity.hasCapability(HtmlTechCapabilities.LASER_CONTAINER, enumFacing.getOpposite());
     }
