@@ -23,14 +23,15 @@ public class LaserProjectorInfo extends MultiblockInfoPage {
     @Override
     public List<MultiblockShapeInfo> getMatchingShapes() {
         MultiblockShapeInfo shapeInfo = MultiblockShapeInfo.builder()
-                .aisle("XXX", "XXX", "XXX")
-                .aisle("XXX", "ECL", "XXX")
-                .aisle("XXX", "XSX", "XXX")
-                .where('S', HTMetaTileEntities.LASER_PROJECTOR, EnumFacing.SOUTH)
+                .aisle("XXX", "XEX", "XXX")
+                .aisle("MXX", "SCX", "XXX")
+                .aisle("XXX", "XLX", "XXX")
+                .where('S', HTMetaTileEntities.LASER_PROJECTOR, EnumFacing.WEST)
                 .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.PTFE_INERT_CASING))
                 .where('C', MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.NAQUADAH))
-                .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[7], EnumFacing.WEST)
-                .where('L', HTMetaTileEntities.LASER_HATCH, EnumFacing.EAST)
+                .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[7], EnumFacing.NORTH)
+                .where('M', MetaTileEntities.MAINTENANCE_HATCH, EnumFacing.WEST)
+                .where('L', HTMetaTileEntities.LASER_HATCH, EnumFacing.SOUTH)
                 .build();
 
         return Lists.newArrayList(shapeInfo);

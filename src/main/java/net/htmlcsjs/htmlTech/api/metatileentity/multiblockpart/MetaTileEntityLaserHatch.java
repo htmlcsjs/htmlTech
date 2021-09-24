@@ -12,7 +12,6 @@ import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockAbilityPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.render.SimpleOverlayRenderer;
-import gregtech.api.render.Textures;
 import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityMultiblockPart;
 import net.htmlcsjs.htmlTech.api.HTTextures;
 import net.htmlcsjs.htmlTech.htmlTech;
