@@ -20,7 +20,7 @@ public class HTMetaTileEntities {
     public static void init() {
         htmlTech.logger.info("registering htmlTech Tile Entities");
 
-        LASER_HATCH = MetaTileEntities.registerMetaTileEntity(9000, new MetaTileEntityLaserHatch(location("laser_hatch.zpm"), 7));
+        LASER_HATCH = MetaTileEntities.registerMetaTileEntity(9000, new MetaTileEntityLaserHatch(location("laser_hatch.zpm"), 7, true));
         LASER_PROJECTOR = MetaTileEntities.registerMetaTileEntity(9001, new MetaTileEntityLaserProjector(location("laser_projector")));
     }
 

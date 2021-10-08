@@ -3,7 +3,9 @@ package net.htmlcsjs.htmlTech.api.metatileentity.multiblockpart;
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
+import gregtech.api.GTValues;
 import gregtech.api.capability.IEnergyContainer;
+import gregtech.api.capability.impl.EnergyContainerHandler;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.widgets.SlotWidget;
@@ -15,6 +17,7 @@ import gregtech.api.render.SimpleOverlayRenderer;
 import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityMultiblockPart;
 import net.htmlcsjs.htmlTech.api.HTTextures;
 import net.htmlcsjs.htmlTech.api.capability.ILaserContainer;
+import net.htmlcsjs.htmlTech.api.capability.LaserContainerHandler;
 import net.htmlcsjs.htmlTech.htmlTech;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
@@ -24,17 +27,26 @@ import java.util.List;
 
 public class MetaTileEntityLaserHatch extends MetaTileEntityMultiblockPart implements IMultiblockAbilityPart<ILaserContainer> {
     private final ItemStackHandler laserInventory;
+    private final ILaserContainer laserEnergyContainer;
     private boolean pathChecked;
+    private final boolean isEmitter;
 
-    public MetaTileEntityLaserHatch(ResourceLocation metaTileEntityId, int tier) {
+    public MetaTileEntityLaserHatch(ResourceLocation metaTileEntityId, int tier, boolean isEmitter) {
         super(metaTileEntityId, tier);
-        laserInventory = new ItemStackHandler(1);
-        pathChecked = false;
+        this.laserInventory = new ItemStackHandler(1);
+        this.pathChecked = false;
+        this.isEmitter = isEmitter;
+        if (isEmitter) {
+            this.laserEnergyContainer = LaserContainerHandler.emitterContainer(this, GTValues.V[14] * 128L, GTValues.V[14], Integer.MAX_VALUE);
+            ((EnergyContainerHandler) this.laserEnergyContainer).setSideOutputCondition(s -> s == getFrontFacing());
+        } else {
+            this.laserEnergyContainer = LaserContainerHandler.receiverContainer(this, GTValues.V[14] * 128L, GTValues.V[14], Integer.MAX_VALUE * 2L);
+        }
     }
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder metaTileEntityHolder) {
-        return new MetaTileEntityLaserHatch(this.metaTileEntityId, this.getTier());
+        return new MetaTileEntityLaserHatch(this.metaTileEntityId, this.getTier(), this.isEmitter);
     }
 
     @Override
@@ -57,12 +69,6 @@ public class MetaTileEntityLaserHatch extends MetaTileEntityMultiblockPart imple
     @Override
     public void update() {
         super.update();
-        if (isAttachedToMultiBlock() && !pathChecked) {
-            htmlTech.logger.info("*path checking*");
-            pathChecked = true;
-        } else if (!isAttachedToMultiBlock()) {
-            pathChecked = false;
-        }
     }
 
     @Override
