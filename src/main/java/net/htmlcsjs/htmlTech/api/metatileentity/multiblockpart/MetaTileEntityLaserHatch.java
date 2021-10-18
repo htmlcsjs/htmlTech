@@ -16,11 +16,14 @@ import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.render.SimpleOverlayRenderer;
 import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityMultiblockPart;
 import net.htmlcsjs.htmlTech.api.HTTextures;
+import net.htmlcsjs.htmlTech.api.capability.HtmlTechCapabilities;
 import net.htmlcsjs.htmlTech.api.capability.ILaserContainer;
 import net.htmlcsjs.htmlTech.api.capability.LaserContainerHandler;
 import net.htmlcsjs.htmlTech.htmlTech;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.List;
@@ -28,17 +31,15 @@ import java.util.List;
 public class MetaTileEntityLaserHatch extends MetaTileEntityMultiblockPart implements IMultiblockAbilityPart<ILaserContainer> {
     private final ItemStackHandler laserInventory;
     private final ILaserContainer laserEnergyContainer;
-    private boolean pathChecked;
     private final boolean isEmitter;
 
     public MetaTileEntityLaserHatch(ResourceLocation metaTileEntityId, int tier, boolean isEmitter) {
         super(metaTileEntityId, tier);
         this.laserInventory = new ItemStackHandler(1);
-        this.pathChecked = false;
         this.isEmitter = isEmitter;
         if (isEmitter) {
             this.laserEnergyContainer = LaserContainerHandler.emitterContainer(this, GTValues.V[14] * 128L, GTValues.V[14], Integer.MAX_VALUE);
-            ((EnergyContainerHandler) this.laserEnergyContainer).setSideOutputCondition(s -> s == getFrontFacing());
+            ((LaserContainerHandler) this.laserEnergyContainer).setSideOutputCondition(s -> s == getFrontFacing());
         } else {
             this.laserEnergyContainer = LaserContainerHandler.receiverContainer(this, GTValues.V[14] * 128L, GTValues.V[14], Integer.MAX_VALUE * 2L);
         }
@@ -62,9 +63,18 @@ public class MetaTileEntityLaserHatch extends MetaTileEntityMultiblockPart imple
     }
 
     @Override
-    public void registerAbilities(List<ILaserContainer> list) {
-
+    public void registerAbilities(List<ILaserContainer> abilityList) {
+        abilityList.add(laserEnergyContainer);
     }
+
+    /*@Override
+    public <T> T getCapability(Capability<T> capability, EnumFacing side) {
+        if (capability == HtmlTechCapabilities.LASER_CONTAINER) {
+            return HtmlTechCapabilities.LASER_CONTAINER.cast(getLaserContainer());
+        } else {
+            return super.getCapability(capability, side);
+        }
+    }*/
 
     @Override
     public void update() {
@@ -79,4 +89,10 @@ public class MetaTileEntityLaserHatch extends MetaTileEntityMultiblockPart imple
             overlay.renderSided(this.getFrontFacing(), renderState, translation, pipeline);
         }
     }
+
+    /*public ILaserContainer getLaserContainer() {
+        return laserEnergyContainer;
+    }*/
+
+    
 }

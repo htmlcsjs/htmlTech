@@ -1,8 +1,8 @@
 package net.htmlcsjs.htmlTech.api.capability;
 
-import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.impl.EnergyContainerHandler;
 import gregtech.api.metatileentity.MetaTileEntity;
+import net.minecraftforge.common.capabilities.Capability;
 
 public class LaserContainerHandler extends EnergyContainerHandler implements ILaserContainer {
     public LaserContainerHandler(MetaTileEntity tileEntity, long maxCapacity, long maxInputVoltage, long maxInputAmperage, long maxOutputVoltage, long maxOutputAmperage) {
@@ -17,4 +17,12 @@ public class LaserContainerHandler extends EnergyContainerHandler implements ILa
         return new LaserContainerHandler(tileEntity, maxCapacity, maxInputVoltage, maxInputAmperage, 0L, 0L);
     }
 
+    @Override
+    public <T> T getCapability(Capability<T> capability) {
+        if (capability == HtmlTechCapabilities.LASER_CONTAINER) {
+            return HtmlTechCapabilities.LASER_CONTAINER.cast(this);
+        } else {
+            return super.getCapability(capability);
+        }
+    }
 }
