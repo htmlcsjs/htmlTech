@@ -1,10 +1,14 @@
 package net.htmlcsjs.htmlTech.proxy;
 
+import gregtech.api.GregTechAPI;
+import gregtech.api.unification.material.Material;
 import net.htmlcsjs.htmlTech.HTValues;
 import net.htmlcsjs.htmlTech.api.blocks.MetaBlocks;
 import net.htmlcsjs.htmlTech.api.item.HTMetaItems;
 import net.htmlcsjs.htmlTech.api.laserpipe.BlockLaserPipe;
 import net.htmlcsjs.htmlTech.api.laserpipe.ItemBlockLaserPipe;
+import net.htmlcsjs.htmlTech.api.materials.HTMaterials;
+import net.htmlcsjs.htmlTech.api.materials.HTOrePrefix;
 import net.htmlcsjs.htmlTech.htmlTech;
 import net.htmlcsjs.htmlTech.api.materials.HTRecipes;
 import net.minecraft.block.Block;
@@ -44,6 +48,12 @@ public class CommonProxy {
     public static void registerItems(RegistryEvent.Register<Item> event) {
         IForgeRegistry<Item> registry = event.getRegistry();
         for(BlockLaserPipe pipe : MetaBlocks.LASER_PIPES) registry.register(createItemBlock(pipe, ItemBlockLaserPipe::new));
+    }
+
+    @SubscribeEvent
+    public static void materialRegister(GregTechAPI.MaterialEvent event) {
+        HTMaterials.init();
+        HTOrePrefix.init();
     }
 
     private static <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {

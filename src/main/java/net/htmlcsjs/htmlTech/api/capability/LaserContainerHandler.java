@@ -22,7 +22,7 @@ public class LaserContainerHandler extends EnergyContainerHandler implements ILa
         if (capability == HtmlTechCapabilities.LASER_CONTAINER) {
             return HtmlTechCapabilities.LASER_CONTAINER.cast(this);
         } else {
-            return super.getCapability(capability);
+            return null;
         }
     }
 }

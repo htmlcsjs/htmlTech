@@ -15,7 +15,7 @@ import gregtech.api.items.gui.PlayerInventoryHolder;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.items.metaitem.stats.IItemBehaviour;
 import gregtech.api.unification.material.Material;
-import gregtech.api.unification.material.MaterialRegistry;
+import gregtech.api.GregTechAPI;
 import gregtech.api.util.GTUtility;
 import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
@@ -79,7 +79,7 @@ public class LaserInspectorToolBehaviour implements IItemBehaviour, ItemUIFactor
         } else if (!laserItem.getRegistryName().toString().equals("gregtech:meta_laser")) {
             return I18n.format("metaitem.tool.laser.inspector.gui.not_laser");
         } else {
-            Material material = MaterialRegistry.MATERIAL_REGISTRY.getObjectById(laserItem.getDamage(laserInventory.getStackInSlot(0)));
+            Material material = GregTechAPI.MATERIAL_REGISTRY.getObjectById(laserItem.getDamage(laserInventory.getStackInSlot(0)));
             int voltage = material.getProperty(LASER).voltage;
             return I18n.format("htmltech.laser.voltage", voltage, GTValues.VN[(GTUtility.getTierByVoltage(voltage))]);
         }
@@ -90,7 +90,7 @@ public class LaserInspectorToolBehaviour implements IItemBehaviour, ItemUIFactor
          if (!laserItem.getRegistryName().toString().equals("gregtech:meta_laser")) {
             return "";
         } else {
-            Material material = MaterialRegistry.MATERIAL_REGISTRY.getObjectById(laserItem.getDamage(laserInventory.getStackInSlot(0)));
+            Material material = GregTechAPI.MATERIAL_REGISTRY.getObjectById(laserItem.getDamage(laserInventory.getStackInSlot(0)));
             int amperage = material.getProperty(LASER).amperage;
             return I18n.format("htmltech.laser.amperage", amperage);
         }
@@ -101,7 +101,7 @@ public class LaserInspectorToolBehaviour implements IItemBehaviour, ItemUIFactor
         if (!laserItem.getRegistryName().toString().equals("gregtech:meta_laser")) {
             return "";
         } else {
-            Material material = MaterialRegistry.MATERIAL_REGISTRY.getObjectById(laserItem.getDamage(laserInventory.getStackInSlot(0)));
+            Material material = GregTechAPI.MATERIAL_REGISTRY.getObjectById(laserItem.getDamage(laserInventory.getStackInSlot(0)));
             double efficiency = material.getProperty(LASER).efficiency;
             return I18n.format("htmltech.laser.efficiency", efficiency);
         }

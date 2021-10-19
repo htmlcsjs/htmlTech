@@ -1,17 +1,16 @@
 package net.htmlcsjs.htmlTech.api.materials;
 
 import gregtech.api.GTValues;
-import gregtech.api.unification.material.IMaterialHandler;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.info.MaterialFlag;
 import gregtech.api.unification.material.properties.PropertyKey;
+import net.htmlcsjs.htmlTech.htmlTech;
 
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gregtech.api.unification.material.info.MaterialIconSet.*;
 
-@IMaterialHandler.RegisterMaterialHandler
-public class HTMaterials implements IMaterialHandler {
+public class HTMaterials {
 
     /* Clamed Range 21000 to 21499 */
     // Materials
@@ -42,8 +41,8 @@ public class HTMaterials implements IMaterialHandler {
         Ruby.setProperty(LASER, new LaserProperties((int) GTValues.V[6], 256, 2));
     }
 
-    @Override
-    public void onMaterialsInit() {
+    public static void init() {
+        //htmlTech.logger.info("Register Htmltech materials");
         register();
     }
 
