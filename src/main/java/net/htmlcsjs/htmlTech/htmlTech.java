@@ -1,9 +1,8 @@
 package net.htmlcsjs.htmlTech;
 
-import gregtech.api.GregTechAPI;
+import gregtech.api.capability.SimpleCapabilityManager;
 import net.htmlcsjs.htmlTech.api.blocks.MetaBlocks;
-import net.htmlcsjs.htmlTech.api.materials.HTMaterials;
-import net.htmlcsjs.htmlTech.api.materials.HTOrePrefix;
+import net.htmlcsjs.htmlTech.api.capability.ILaserContainer;
 import net.htmlcsjs.htmlTech.api.metatileentity.HTMetaTileEntities;
 import net.htmlcsjs.htmlTech.proxy.CommonProxy;
 import net.minecraftforge.fml.common.Mod;
@@ -11,7 +10,6 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.apache.logging.log4j.Logger;
 
 @Mod(modid = htmlTech.MODID, name = htmlTech.NAME, version = htmlTech.VERSION,
@@ -31,6 +29,7 @@ public class htmlTech {
         logger = event.getModLog();
         HTMetaTileEntities.init();
         MetaBlocks.init();
+        SimpleCapabilityManager.registerCapabilityWithNoDefault(ILaserContainer.class);
         proxy.preLoad();
     }
 

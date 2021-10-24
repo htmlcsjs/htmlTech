@@ -19,7 +19,7 @@ public class LaserContainerHandler extends EnergyContainerHandler implements ILa
 
     @Override
     public <T> T getCapability(Capability<T> capability) {
-        if (capability == HtmlTechCapabilities.LASER_CONTAINER) {
+        if (capability.equals(HtmlTechCapabilities.LASER_CONTAINER)) {
             return HtmlTechCapabilities.LASER_CONTAINER.cast(this);
         } else {
             return null;
