@@ -1,8 +1,5 @@
 package net.htmlcsjs.htmlTech.api.laserpipe;
 
-import gregtech.api.pipenet.PipeNet;
-import gregtech.api.pipenet.WorldPipeNet;
-import gregtech.api.pipenet.block.BlockPipe;
 import gregtech.api.pipenet.block.simple.BlockSimplePipe;
 import gregtech.api.pipenet.block.simple.EmptyNodeData;
 import gregtech.api.pipenet.tile.IPipeTile;
@@ -69,7 +66,7 @@ public class BlockLaserPipe extends BlockSimplePipe<LaserPipeType, EmptyNodeData
 
     @Override
     public boolean canPipesConnect(IPipeTile iPipeTile, EnumFacing enumFacing, IPipeTile iPipeTile1) {
-        return iPipeTile1 instanceof TileEntityLaserPipe;
+        return iPipeTile1 instanceof TileEntityLaserPipe && iPipeTile1.getInsulationColor() == iPipeTile.getInsulationColor();
     }
 
     @Override
