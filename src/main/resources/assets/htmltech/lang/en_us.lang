@@ -6,9 +6,25 @@ metaitem.tool.laser.inspector.gui.not_laser=§lThis isnt a laser, please put in 
 htmltech.laser.voltage=Max Voltage: §a%,d §a(%s)
 htmltech.laser.amperage=Max Amperage: §e%,d
 htmltech.laser.efficiency=Atmospherical Interferance per metre in Oxygen: §c%d§7
-htmltech.machine.laser_hatch.zpm.name=ZPM Laser Hatch
+htmltech.machine.laser_output_hatch.name=Laser Emitting Hatch
 htmltech.machine.laser_projector.name=Laser Projector
 htmltech.multiblock.laser_projector.description=Projects Lasers using power
+
+htmltech.machine.laser_input_hatch.ulv.name=ULV Laser Collecting Hatch
+htmltech.machine.laser_input_hatch.lv.name=LV Laser Collecting Hatch
+htmltech.machine.laser_input_hatch.mv.name=MV Laser Collecting Hatch
+htmltech.machine.laser_input_hatch.hv.name=HV Laser Collecting Hatch
+htmltech.machine.laser_input_hatch.ev.name=EV Laser Collecting Hatch
+htmltech.machine.laser_input_hatch.iv.name=IV Laser Collecting Hatch
+htmltech.machine.laser_input_hatch.luv.name=LuV Laser Collecting Hatch
+htmltech.machine.laser_input_hatch.zpm.name=ZPM Laser Collecting Hatch
+htmltech.machine.laser_input_hatch.uv.name=UV Laser Collecting Hatch
+htmltech.machine.laser_input_hatch.uhv.name=UHV Laser Collecting Hatch
+htmltech.machine.laser_input_hatch.uev.name=UEV Laser Collecting Hatch
+htmltech.machine.laser_input_hatch.uiv.name=UIV Laser Collecting Hatch
+htmltech.machine.laser_input_hatch.umv.name=UMV Laser Collecting Hatch
+htmltech.machine.laser_input_hatch.uxv.name=UXV Laser Collecting Hatch
+htmltech.machine.laser_input_hatch.max.name=MAX Laser Collecting Hatch
 
 item.material.oreprefix.laser=%s Laser
 material.floppa=FlOPPa

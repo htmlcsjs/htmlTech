@@ -31,7 +31,7 @@ public class LaserProjectorInfo extends MultiblockInfoPage {
                 .where('C', MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.NAQUADAH))
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[7], EnumFacing.NORTH)
                 .where('M', MetaTileEntities.MAINTENANCE_HATCH, EnumFacing.WEST)
-                .where('L', HTMetaTileEntities.LASER_HATCH, EnumFacing.SOUTH)
+                .where('L', HTMetaTileEntities.LASER_OUTPUT_HATCH, EnumFacing.SOUTH)
                 .build();
 
         return Lists.newArrayList(shapeInfo);

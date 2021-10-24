@@ -6,4 +6,5 @@ import net.htmlcsjs.htmlTech.api.capability.ILaserContainer;
 @SuppressWarnings("InstantiationOfUtilityClass")
 public class HTMultiblockAbility {
     public static final MultiblockAbility<ILaserContainer> OUTPUT_LASER = new MultiblockAbility<>();
+    public static final MultiblockAbility<ILaserContainer> INPUT_LASER = new MultiblockAbility<>();
 }
