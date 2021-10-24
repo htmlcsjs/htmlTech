@@ -78,4 +78,9 @@ public class BlockLaserPipe extends BlockSimplePipe<LaserPipeType, EmptyNodeData
     public EnumBlockRenderType getRenderType(IBlockState state) {
         return LaserPipeRenderer.BLOCK_RENDER_TYPE;
     }
+
+    @Override
+    public String getTranslationKey() {
+        return "htmltech.laser.pipe";
+    }
 }

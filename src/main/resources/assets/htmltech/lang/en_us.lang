@@ -9,6 +9,7 @@ htmltech.laser.efficiency=Atmospherical Interferance per metre in Oxygen: Â§c%dÂ
 htmltech.machine.laser_output_hatch.name=Laser Emitting Hatch
 htmltech.machine.laser_projector.name=Laser Projector
 htmltech.multiblock.laser_projector.description=Projects Lasers using power
+htmltech.laser.pipe.name=Sealed Laser Pipe
 
 htmltech.machine.laser_input_hatch.ulv.name=ULV Laser Collecting Hatch
 htmltech.machine.laser_input_hatch.lv.name=LV Laser Collecting Hatch
