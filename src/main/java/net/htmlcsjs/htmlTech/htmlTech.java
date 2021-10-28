@@ -1,7 +1,7 @@
 package net.htmlcsjs.htmlTech;
 
 import gregtech.api.capability.SimpleCapabilityManager;
-import net.htmlcsjs.htmlTech.api.blocks.MetaBlocks;
+import net.htmlcsjs.htmlTech.api.blocks.HTMetaBlocks;
 import net.htmlcsjs.htmlTech.api.capability.ILaserContainer;
 import net.htmlcsjs.htmlTech.api.metatileentity.HTMetaTileEntities;
 import net.htmlcsjs.htmlTech.proxy.CommonProxy;
@@ -27,8 +27,8 @@ public class htmlTech {
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         logger = event.getModLog();
+        HTMetaBlocks.init();
         HTMetaTileEntities.init();
-        MetaBlocks.init();
         SimpleCapabilityManager.registerCapabilityWithNoDefault(ILaserContainer.class);
         proxy.preLoad();
     }
