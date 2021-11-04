@@ -16,7 +16,6 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
-import gregtech.api.render.Textures;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
 import net.htmlcsjs.htmlTech.api.HTTextures;
@@ -112,7 +111,7 @@ public class MetaTileEntityLaserCollector extends MultiblockWithDisplayBase {
     @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
-        return Textures.LASER_ENGRAVER_OVERLAY;
+        return HTTextures.LASER_COLLECTOR_OVERLAY;
     }
 
     @Override

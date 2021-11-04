@@ -5,10 +5,7 @@ import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import com.google.common.collect.Lists;
 import gregtech.api.capability.IEnergyContainer;
-import gregtech.api.capability.impl.EnergyContainerHandler;
 import gregtech.api.capability.impl.EnergyContainerList;
-import gregtech.api.capability.impl.FluidTankList;
-import gregtech.api.capability.impl.ItemHandlerList;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -23,6 +20,7 @@ import gregtech.api.render.Textures;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
+import net.htmlcsjs.htmlTech.api.HTTextures;
 import net.htmlcsjs.htmlTech.api.capability.ILaserContainer;
 import net.htmlcsjs.htmlTech.api.capability.LaserContainerList;
 import net.htmlcsjs.htmlTech.api.metatileentity.multiblockpart.HTMultiblockAbility;
@@ -30,7 +28,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nonnull;
-import java.util.List;
 
 public class MetaTileEntityLaserProjector extends MultiblockWithDisplayBase {
 
@@ -111,7 +108,7 @@ public class MetaTileEntityLaserProjector extends MultiblockWithDisplayBase {
     @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
-        return Textures.LASER_ENGRAVER_OVERLAY;
+        return HTTextures.LASER_PROJECTOR_OVERLAY;
     }
 
     @Override
