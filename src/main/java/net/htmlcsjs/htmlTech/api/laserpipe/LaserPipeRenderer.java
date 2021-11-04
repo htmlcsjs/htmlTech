@@ -18,6 +18,7 @@ import gregtech.api.GTValues;
 import gregtech.api.cover.ICoverable;
 import gregtech.api.pipenet.block.simple.EmptyNodeData;
 import gregtech.api.pipenet.tile.IPipeTile;
+import gregtech.api.render.GTBlockOperation;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.ModCompatibility;
 import net.htmlcsjs.htmlTech.htmlTech;
@@ -129,7 +130,7 @@ public class LaserPipeRenderer implements ICCBlockRenderer, IItemRenderer {
                 renderPipeBlock(fluidPipeType, paintingColor, renderState, pipeline, connectedSidesMap);
 
             ICoverable coverable = tileEntityPipe.getCoverableImplementation();
-            coverable.renderCovers(renderState, new Matrix4().translate(pos.getX(), pos.getY(), pos.getZ()), renderLayer);
+            coverable.renderCovers(renderState, new Matrix4().translate(pos.getX(), pos.getY(), pos.getZ()), new GTBlockOperation(renderLayer, new boolean[]{true}));
         }
         return true;
     }

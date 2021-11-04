@@ -24,8 +24,8 @@ public class HTTextures {
         LASER_OUTPUT = new SimpleOverlayRenderer("overlay/machine/overlay_laser_out");
         HTMLTECH_CAPE = new ResourceLocation(htmlTech.MODID, "textures/htmltech_cape.png");
         FLOPPA_CASING = new SimpleCubeRenderer("casings/floppa_casing");
-        LASER_PROJECTOR_OVERLAY = new OrientedOverlayRenderer("overlay/multi/laser_projector", false, OrientedOverlayRenderer.OverlayFace.FRONT);
-        LASER_COLLECTOR_OVERLAY = new OrientedOverlayRenderer("overlay/multi/laser_collector", false, OrientedOverlayRenderer.OverlayFace.FRONT);
-        LASER_REFLECTOR_OVERLAY = new OrientedOverlayRenderer("overlay/multi/laser_reflector", false, OrientedOverlayRenderer.OverlayFace.FRONT);
+        LASER_PROJECTOR_OVERLAY = new OrientedOverlayRenderer("overlay/multi/laser_projector",  OrientedOverlayRenderer.OverlayFace.FRONT);
+        LASER_COLLECTOR_OVERLAY = new OrientedOverlayRenderer("overlay/multi/laser_collector",  OrientedOverlayRenderer.OverlayFace.FRONT);
+        LASER_REFLECTOR_OVERLAY = new OrientedOverlayRenderer("overlay/multi/laser_reflector",  OrientedOverlayRenderer.OverlayFace.FRONT);
     }
 }
