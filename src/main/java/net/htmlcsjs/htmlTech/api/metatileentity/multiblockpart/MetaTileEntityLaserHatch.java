@@ -12,6 +12,7 @@ import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockAbilityPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.render.SimpleOverlayRenderer;
+import gregtech.api.util.PipelineUtil;
 import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityMultiblockPart;
 import net.htmlcsjs.htmlTech.api.HTTextures;
 import net.htmlcsjs.htmlTech.api.capability.ILaserContainer;
@@ -84,7 +85,7 @@ public class MetaTileEntityLaserHatch extends MetaTileEntityMultiblockPart imple
             } else {
                 overlay = HTTextures.LASER_INPUT;
             }
-            overlay.renderSided(this.getFrontFacing(), renderState, translation, pipeline);
+            overlay.renderSided(this.getFrontFacing(), renderState, translation, PipelineUtil.color(pipeline, GTValues.VC[this.getTier()]));
         }
     }
 
