@@ -8,6 +8,9 @@ public class PipeLaserContainer implements ILaserContainer {
 
     private final TileEntityLaserPipe pipe;
 
+    private long diodeVoltage;
+    private long diodeAmperage;
+
     public PipeLaserContainer(TileEntityLaserPipe pipe) {
         this.pipe = pipe;
     }
@@ -49,5 +52,25 @@ public class PipeLaserContainer implements ILaserContainer {
     @Override
     public long getInputVoltage() {
         return 0;
+    }
+
+    @Override
+    public long getDiodeAmperage() {
+        return diodeAmperage;
+    }
+
+    @Override
+    public long getDiodeVoltage() {
+        return diodeVoltage;
+    }
+
+    @Override
+    public void setDiodeAmperage(long amperage) {
+        diodeAmperage = amperage;
+    }
+
+    @Override
+    public void setDiodeVoltage(long voltage) {
+        diodeVoltage = voltage;
     }
 }

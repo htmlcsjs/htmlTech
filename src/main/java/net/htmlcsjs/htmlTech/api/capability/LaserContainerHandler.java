@@ -5,6 +5,9 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import net.minecraftforge.common.capabilities.Capability;
 
 public class LaserContainerHandler extends EnergyContainerHandler implements ILaserContainer {
+    private long diodeVoltage;
+    private long diodeAmperage;
+
     public LaserContainerHandler(MetaTileEntity tileEntity, long maxCapacity, long maxInputVoltage, long maxInputAmperage, long maxOutputVoltage, long maxOutputAmperage) {
         super(tileEntity, maxCapacity, maxInputVoltage, maxInputAmperage, maxOutputVoltage, maxOutputAmperage);
     }
@@ -24,5 +27,25 @@ public class LaserContainerHandler extends EnergyContainerHandler implements ILa
         } else {
             return null;
         }
+    }
+
+    @Override
+    public long getDiodeAmperage() {
+        return diodeAmperage;
+    }
+
+    @Override
+    public long getDiodeVoltage() {
+        return diodeVoltage;
+    }
+
+    @Override
+    public void setDiodeAmperage(long amperage) {
+        diodeAmperage = amperage;
+    }
+
+    @Override
+    public void setDiodeVoltage(long voltage) {
+        diodeVoltage = voltage;
     }
 }

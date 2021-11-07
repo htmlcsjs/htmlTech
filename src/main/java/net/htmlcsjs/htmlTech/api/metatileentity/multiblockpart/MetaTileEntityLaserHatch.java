@@ -4,6 +4,7 @@ import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import gregtech.api.GTValues;
+import gregtech.api.GregTechAPI;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.widgets.SlotWidget;
@@ -12,26 +13,33 @@ import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockAbilityPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.render.SimpleOverlayRenderer;
+import gregtech.api.unification.material.Material;
 import gregtech.api.util.PipelineUtil;
 import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityMultiblockPart;
 import net.htmlcsjs.htmlTech.api.HTTextures;
 import net.htmlcsjs.htmlTech.api.capability.ILaserContainer;
 import net.htmlcsjs.htmlTech.api.capability.LaserContainerHandler;
+import net.htmlcsjs.htmlTech.htmlTech;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.List;
 
+import static net.htmlcsjs.htmlTech.api.materials.HTMaterials.LASER;
+
 public class MetaTileEntityLaserHatch extends MetaTileEntityMultiblockPart implements IMultiblockAbilityPart<ILaserContainer> {
     private final ItemStackHandler laserInventory;
     private final ILaserContainer laserEnergyContainer;
     private final boolean isEmitter;
+    private ItemStackHandler diodeItem;
 
     public MetaTileEntityLaserHatch(ResourceLocation metaTileEntityId, int tier, boolean isEmitter) {
         super(metaTileEntityId, tier);
         this.laserInventory = new ItemStackHandler(1);
         this.isEmitter = isEmitter;
+        this.diodeItem = new ItemStackHandler(1);
         if (isEmitter) {
             this.laserEnergyContainer = LaserContainerHandler.emitterContainer(this, GTValues.V[14] * 128L, GTValues.V[14], Integer.MAX_VALUE);
             ((LaserContainerHandler) this.laserEnergyContainer).setSideOutputCondition(s -> s == getFrontFacing());
@@ -73,6 +81,20 @@ public class MetaTileEntityLaserHatch extends MetaTileEntityMultiblockPart imple
     @Override
     public void update() {
         super.update();
+        if ((isEmitter && !laserInventory.equals(diodeItem)) && getOffsetTimer() % 20 == 0) {
+            diodeItem = laserInventory;
+
+            Item laserItem = diodeItem.getStackInSlot(0).getItem();
+            if (laserItem.getRegistryName().toString().equals("gregtech:meta_laser")) {
+                Material material = GregTechAPI.MATERIAL_REGISTRY.getObjectById(laserItem.getDamage(laserInventory.getStackInSlot(0)));
+                laserEnergyContainer.setDiodeAmperage(material.getProperty(LASER).amperage);
+                laserEnergyContainer.setDiodeVoltage(material.getProperty(LASER).voltage);
+            } else {
+                laserEnergyContainer.setDiodeVoltage(0);
+                laserEnergyContainer.setDiodeAmperage(0);
+            }
+            htmlTech.logger.info("New diode: " + String.valueOf(laserEnergyContainer.getDiodeAmperage()) + "A, " + String.valueOf(laserEnergyContainer.getDiodeVoltage()) + "Eu/t");
+        }
     }
 
     @Override

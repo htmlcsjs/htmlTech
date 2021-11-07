@@ -7,6 +7,8 @@ import java.util.List;
 
 public class LaserContainerList implements ILaserContainer {
     private final List<ILaserContainer> laserContainerList;
+    private long diodeVoltage;
+    private long diodeAmperage;
 
     public LaserContainerList(List<ILaserContainer> laserContainerList) {
         this.laserContainerList = laserContainerList;
@@ -78,5 +80,45 @@ public class LaserContainerList implements ILaserContainer {
     @Override
     public boolean outputsEnergy(EnumFacing side) {
         return true;
+    }
+
+    @Override
+    public long getDiodeAmperage() {
+        try {
+            ILaserContainer firstDiode = laserContainerList.get(0);
+            return firstDiode.getDiodeAmperage();
+        } catch (IndexOutOfBoundsException e) {
+            return 0;
+        }
+    }
+
+    @Override
+    public long getDiodeVoltage() {
+        try {
+            ILaserContainer firstDiode = laserContainerList.get(0);
+            return firstDiode.getDiodeVoltage();
+        } catch (IndexOutOfBoundsException e) {
+            return 0;
+        }
+    }
+
+    @Override
+    public void setDiodeAmperage(long amperage) {
+        try {
+            ILaserContainer firstDiode = laserContainerList.get(0);
+            firstDiode.setDiodeAmperage(amperage);
+        } catch (IndexOutOfBoundsException e) {
+            return;
+        }
+    }
+
+    @Override
+    public void setDiodeVoltage(long voltage) {
+        try {
+            ILaserContainer firstDiode = laserContainerList.get(0);
+            firstDiode.setDiodeVoltage(voltage);
+        } catch (IndexOutOfBoundsException e) {
+            return;
+        }
     }
 }

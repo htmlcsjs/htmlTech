@@ -4,6 +4,7 @@ import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import com.google.common.collect.Lists;
+import gregtech.api.GTValues;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.impl.EnergyContainerList;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -17,6 +18,7 @@ import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
+import gregtech.api.util.GTUtility;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
@@ -25,9 +27,13 @@ import net.htmlcsjs.htmlTech.api.capability.ILaserContainer;
 import net.htmlcsjs.htmlTech.api.capability.LaserContainerList;
 import net.htmlcsjs.htmlTech.api.metatileentity.multiblockpart.HTMultiblockAbility;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentString;
 
 import javax.annotation.Nonnull;
+import java.util.List;
 
 public class MetaTileEntityLaserProjector extends MultiblockWithDisplayBase {
 
@@ -39,7 +45,6 @@ public class MetaTileEntityLaserProjector extends MultiblockWithDisplayBase {
 
     protected IEnergyContainer energyContainer;
     protected ILaserContainer laserContainer;
-    private Object EnergyContainerHandler;
 
     public MetaTileEntityLaserProjector(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId);
@@ -115,5 +120,14 @@ public class MetaTileEntityLaserProjector extends MultiblockWithDisplayBase {
     public void renderMetaTileEntity(CCRenderState renderState, Matrix4 translation, IVertexOperation[] pipeline) {
         super.renderMetaTileEntity(renderState, translation, pipeline);
         this.getFrontOverlay().render(renderState, translation, pipeline, this.getFrontFacing(), this.isStructureFormed());
+    }
+
+    @Override
+    protected void addDisplayText(List<ITextComponent> textList) {
+        super.addDisplayText(textList);
+
+        long voltage = laserContainer.getDiodeVoltage();
+        textList.add(new TextComponentString(I18n.format("htmltech.laser.voltage", voltage, GTValues.VN[(GTUtility.getTierByVoltage(voltage))])));
+        textList.add(new TextComponentString(I18n.format("htmltech.laser.amperage", laserContainer.getDiodeAmperage())));
     }
 }
