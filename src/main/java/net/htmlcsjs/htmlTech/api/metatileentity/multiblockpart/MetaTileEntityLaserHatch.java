@@ -22,6 +22,7 @@ import net.htmlcsjs.htmlTech.api.capability.LaserContainerHandler;
 import net.htmlcsjs.htmlTech.htmlTech;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.items.ItemStackHandler;
 
@@ -93,7 +94,7 @@ public class MetaTileEntityLaserHatch extends MetaTileEntityMultiblockPart imple
                 laserEnergyContainer.setDiodeVoltage(0);
                 laserEnergyContainer.setDiodeAmperage(0);
             }
-            htmlTech.logger.info("New diode: " + String.valueOf(laserEnergyContainer.getDiodeAmperage()) + "A, " + String.valueOf(laserEnergyContainer.getDiodeVoltage()) + "Eu/t");
+            htmlTech.logger.debug("New diode: " + String.valueOf(laserEnergyContainer.getDiodeAmperage()) + "A, " + String.valueOf(laserEnergyContainer.getDiodeVoltage()) + "Eu/t");
         }
     }
 
@@ -109,6 +110,19 @@ public class MetaTileEntityLaserHatch extends MetaTileEntityMultiblockPart imple
             }
             overlay.renderSided(this.getFrontFacing(), renderState, translation, PipelineUtil.color(pipeline, GTValues.VC[this.getTier()]));
         }
+    }
+
+    @Override
+    public NBTTagCompound writeToNBT(NBTTagCompound data) {
+        super.writeToNBT(data);
+        data.setTag("LaserInventory", laserInventory.serializeNBT());
+        return data;
+    }
+
+    @Override
+    public void readFromNBT(NBTTagCompound data) {
+        super.readFromNBT(data);
+        this.laserInventory.deserializeNBT(data.getCompoundTag("LaserInventory"));
     }
 
 }
