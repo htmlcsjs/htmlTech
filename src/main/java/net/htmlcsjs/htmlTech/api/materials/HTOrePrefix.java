@@ -26,7 +26,7 @@ public class HTOrePrefix {
         laserIcon = new MaterialIconType("laser");
 
         laser = new OrePrefix("laser", -1, null, laserIcon, ENABLE_UNIFICATION, material -> material.hasProperty(LASER),  material -> {
-            List<String> textList = new ArrayList<>();
+            List<String> textList = new ArrayList<String>();
 
             int voltage = material.getProperty(LASER).voltage;
             int amperage = material.getProperty(LASER).amperage;
