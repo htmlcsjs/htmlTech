@@ -49,7 +49,6 @@ public class MetaTileEntityLaserProjector extends MultiblockWithDisplayBase {
     public MetaTileEntityLaserProjector(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId);
         isActive = true;
-        resetTileAbilities();
     }
 
     public IEnergyContainer getEnergyContainer() {
@@ -80,8 +79,9 @@ public class MetaTileEntityLaserProjector extends MultiblockWithDisplayBase {
                 .build();
     }
 
+
     private void initializeAbilities() {
-        this.laserContainer = new LaserContainerList(getAbilities(new MultiblockAbility<ILaserContainer>()));
+        this.laserContainer = new LaserContainerList(getAbilities(HTMultiblockAbility.INPUT_LASER));
         this.energyContainer = new EnergyContainerList(getAbilities(MultiblockAbility.INPUT_ENERGY));
     }
 
@@ -126,7 +126,7 @@ public class MetaTileEntityLaserProjector extends MultiblockWithDisplayBase {
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
 
-        long voltage = laserContainer.getDiodeVoltage();
+        long voltage = laserContainer.getInputVoltage();//laserContainer.getDiodeVoltage();
         textList.add(new TextComponentString(I18n.format("htmltech.laser.voltage", voltage, GTValues.VN[(GTUtility.getTierByVoltage(voltage))])));
         textList.add(new TextComponentString(I18n.format("htmltech.laser.amperage", laserContainer.getDiodeAmperage())));
     }

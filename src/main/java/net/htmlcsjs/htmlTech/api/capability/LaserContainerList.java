@@ -1,6 +1,6 @@
 package net.htmlcsjs.htmlTech.api.capability;
 
-import gregtech.api.capability.IEnergyContainer;
+import net.htmlcsjs.htmlTech.htmlTech;
 import net.minecraft.util.EnumFacing;
 
 import java.util.List;
@@ -17,8 +17,8 @@ public class LaserContainerList implements ILaserContainer {
     @Override
     public long acceptEnergyFromNetwork(EnumFacing side, long voltage, long amperage) {
         long amperesUsed = 0L;
-        for (IEnergyContainer energyContainer : laserContainerList) {
-            amperesUsed += energyContainer.acceptEnergyFromNetwork(null, voltage, amperage);
+        for (ILaserContainer laserContainer : laserContainerList) {
+            amperesUsed += laserContainer.acceptEnergyFromNetwork(null, voltage, amperage);
             if (amperage == amperesUsed) break;
         }
         return amperesUsed;
@@ -27,8 +27,8 @@ public class LaserContainerList implements ILaserContainer {
     @Override
     public long changeEnergy(long energyToAdd) {
         long energyAdded = 0L;
-        for (IEnergyContainer energyContainer : laserContainerList) {
-            energyAdded += energyContainer.changeEnergy(energyToAdd - energyAdded);
+        for (ILaserContainer laserContainer : laserContainerList) {
+            energyAdded += laserContainer.changeEnergy(energyToAdd - energyAdded);
             if (energyAdded == energyToAdd) break;
         }
         return energyAdded;
@@ -37,14 +37,14 @@ public class LaserContainerList implements ILaserContainer {
     @Override
     public long getEnergyStored() {
         return laserContainerList.stream()
-                .mapToLong(IEnergyContainer::getEnergyStored)
+                .mapToLong(ILaserContainer::getEnergyStored)
                 .sum();
     }
 
     @Override
     public long getEnergyCapacity() {
         return laserContainerList.stream()
-                .mapToLong(IEnergyContainer::getEnergyCapacity)
+                .mapToLong(ILaserContainer::getEnergyCapacity)
                 .sum();
     }
 
@@ -84,22 +84,33 @@ public class LaserContainerList implements ILaserContainer {
 
     @Override
     public long getDiodeAmperage() {
-        try {
+        /*try {
             ILaserContainer firstDiode = laserContainerList.get(0);
             return firstDiode.getDiodeAmperage();
         } catch (IndexOutOfBoundsException e) {
+            htmlTech.logger.warn(laserContainerList.size());
             return 0;
-        }
+        }*/
+        htmlTech.logger.warn("list size:" + laserContainerList.size());
+        return laserContainerList.stream()
+                .mapToLong(ILaserContainer::getDiodeAmperage)
+                .sum();
     }
 
     @Override
     public long getDiodeVoltage() {
-        try {
+        /*try {
             ILaserContainer firstDiode = laserContainerList.get(0);
             return firstDiode.getDiodeVoltage();
         } catch (IndexOutOfBoundsException e) {
+            htmlTech.logger.warn(laserContainerList.size());
             return 0;
-        }
+        }*/
+        long voltage = laserContainerList.stream()
+                .mapToLong(ILaserContainer::getDiodeVoltage)
+                .sum();
+        htmlTech.logger.info(voltage);
+        return voltage;
     }
 
     @Override
@@ -108,7 +119,7 @@ public class LaserContainerList implements ILaserContainer {
             ILaserContainer firstDiode = laserContainerList.get(0);
             firstDiode.setDiodeAmperage(amperage);
         } catch (IndexOutOfBoundsException e) {
-            return;
+            htmlTech.logger.warn(laserContainerList.size());
         }
     }
 
@@ -118,7 +129,7 @@ public class LaserContainerList implements ILaserContainer {
             ILaserContainer firstDiode = laserContainerList.get(0);
             firstDiode.setDiodeVoltage(voltage);
         } catch (IndexOutOfBoundsException e) {
-            return;
+            htmlTech.logger.warn(laserContainerList.size());
         }
     }
 }

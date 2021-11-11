@@ -94,7 +94,7 @@ public class MetaTileEntityLaserHatch extends MetaTileEntityMultiblockPart imple
                 laserEnergyContainer.setDiodeVoltage(0);
                 laserEnergyContainer.setDiodeAmperage(0);
             }
-            htmlTech.logger.debug("New diode: " + String.valueOf(laserEnergyContainer.getDiodeAmperage()) + "A, " + String.valueOf(laserEnergyContainer.getDiodeVoltage()) + "Eu/t");
+            htmlTech.logger.debug("New diode: " + laserEnergyContainer.getDiodeAmperage() + "A, " + laserEnergyContainer.getDiodeVoltage() + "Eu/t");
         }
     }
 
