@@ -91,7 +91,6 @@ public class LaserContainerList implements ILaserContainer {
             htmlTech.logger.warn(laserContainerList.size());
             return 0;
         }*/
-        htmlTech.logger.warn("list size:" + laserContainerList.size());
         return laserContainerList.stream()
                 .mapToLong(ILaserContainer::getDiodeAmperage)
                 .sum();
@@ -109,7 +108,6 @@ public class LaserContainerList implements ILaserContainer {
         long voltage = laserContainerList.stream()
                 .mapToLong(ILaserContainer::getDiodeVoltage)
                 .sum();
-        htmlTech.logger.info(voltage);
         return voltage;
     }
 
