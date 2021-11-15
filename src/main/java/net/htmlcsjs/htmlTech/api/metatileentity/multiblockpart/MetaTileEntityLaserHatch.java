@@ -126,3 +126,4 @@ public class MetaTileEntityLaserHatch extends MetaTileEntityMultiblockPart imple
     }
 
 }
+
