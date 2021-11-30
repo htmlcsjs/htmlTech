@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.Logger;
 
 @Mod(modid = htmlTech.MODID, name = htmlTech.NAME, version = htmlTech.VERSION,
-        dependencies = "required-after:gregtech@[2.0,);")
+        dependencies = "required-after:gregtech;")
 public class htmlTech {
     public static final String MODID = HTValues.MODID;
     public static final String NAME = HTValues.MOD_NAME;
@@ -27,9 +27,9 @@ public class htmlTech {
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         logger = event.getModLog();
+        SimpleCapabilityManager.registerCapabilityWithNoDefault(ILaserContainer.class);
         HTMetaBlocks.init();
         HTMetaTileEntities.init();
-        SimpleCapabilityManager.registerCapabilityWithNoDefault(ILaserContainer.class);
         proxy.preLoad();
     }
 
