@@ -53,7 +53,6 @@ public class MetaTileEntityLaserCollector extends HTMultiblockWithDisplayBase {
     protected void updateFormedValid() {
     }
 
-
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()

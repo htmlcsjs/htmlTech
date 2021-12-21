@@ -22,7 +22,6 @@ import gregtech.common.blocks.MetaBlocks;
 import net.htmlcsjs.htmlTech.HTTextures;
 import net.htmlcsjs.htmlTech.capability.ILaserContainer;
 import net.htmlcsjs.htmlTech.capability.LaserContainerList;
-import net.htmlcsjs.htmlTech.htmlTech;
 import net.htmlcsjs.htmlTech.metatileentity.HTMultiblockWithDisplayBase;
 import net.htmlcsjs.htmlTech.metatileentity.multiblockpart.HTMultiblockAbility;
 import net.minecraft.block.state.IBlockState;
@@ -56,7 +55,6 @@ public class MetaTileEntityLaserProjector extends HTMultiblockWithDisplayBase {
 
     @Override
     protected void updateFormedValid() {
-        htmlTech.logger.info(getAbilities(HTMultiblockAbility.INPUT_LASER).size());
     }
 
 

@@ -17,15 +17,19 @@ public abstract class HTMultiblockWithDisplayBase extends MultiblockWithDisplayB
         return autoAbilities(true, false, true, true, true, true);
     }
 
-    public TraceabilityPredicate autoAbilities(boolean checkMaintenance, boolean checkMuffler, boolean checkEnergyIn, boolean checkEnergyOut, boolean checkLaserIn, boolean chechLaserOut) {
+
+    public TraceabilityPredicate autoAbilities(boolean checkMaintenance, boolean checkMuffler, boolean checkEnergyIn, boolean checkEnergyOut, boolean checkLaserIn, boolean checkLaserOut) {
         TraceabilityPredicate predicate = super.autoAbilities(checkMaintenance, checkMuffler);
         if (checkEnergyIn) {
             predicate = predicate.or(abilities(MultiblockAbility.INPUT_ENERGY).setMaxGlobalLimited(3).setMinGlobalLimited(1).setPreviewCount(1));
-        } else if (checkEnergyOut) {
+        }
+        if (checkEnergyOut) {
             predicate = predicate.or(abilities(MultiblockAbility.OUTPUT_ENERGY).setMaxGlobalLimited(3).setMinGlobalLimited(1).setPreviewCount(1));
-        } else if (checkLaserIn) {
+        }
+        if (checkLaserIn) {
             predicate = predicate.or(abilities(HTMultiblockAbility.INPUT_LASER).setMaxGlobalLimited(3).setMinGlobalLimited(1).setPreviewCount(1));
-        } else if (chechLaserOut) {
+        }
+        if (checkLaserOut) {
             predicate = predicate.or(abilities(HTMultiblockAbility.OUTPUT_LASER).setMaxGlobalLimited(3).setMinGlobalLimited(1).setPreviewCount(1));
         }
         return predicate;

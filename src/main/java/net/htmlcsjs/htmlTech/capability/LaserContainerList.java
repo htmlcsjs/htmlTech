@@ -1,6 +1,5 @@
 package net.htmlcsjs.htmlTech.capability;
 
-import net.htmlcsjs.htmlTech.htmlTech;
 import net.minecraft.util.EnumFacing;
 
 import java.util.List;
@@ -116,8 +115,7 @@ public class LaserContainerList implements ILaserContainer {
         try {
             ILaserContainer firstDiode = laserContainerList.get(0);
             firstDiode.setDiodeAmperage(amperage);
-        } catch (IndexOutOfBoundsException e) {
-            htmlTech.logger.warn(laserContainerList.size());
+        } catch (IndexOutOfBoundsException ignored) {
         }
     }
 
@@ -126,8 +124,7 @@ public class LaserContainerList implements ILaserContainer {
         try {
             ILaserContainer firstDiode = laserContainerList.get(0);
             firstDiode.setDiodeVoltage(voltage);
-        } catch (IndexOutOfBoundsException e) {
-            htmlTech.logger.warn(laserContainerList.size());
+        } catch (IndexOutOfBoundsException ignored) {
         }
     }
 }
