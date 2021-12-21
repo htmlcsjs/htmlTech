@@ -1,10 +1,10 @@
 package net.htmlcsjs.htmlTech.proxy;
 
 import com.mojang.authlib.minecraft.MinecraftProfileTexture;
-import net.htmlcsjs.htmlTech.api.HTTextures;
-import net.htmlcsjs.htmlTech.api.blocks.HTMetaBlocks;
-import net.htmlcsjs.htmlTech.api.laserpipe.BlockLaserPipe;
-import net.htmlcsjs.htmlTech.api.laserpipe.LaserPipeRenderer;
+import net.htmlcsjs.htmlTech.HTTextures;
+import net.htmlcsjs.htmlTech.blocks.HTMetaBlocks;
+import net.htmlcsjs.htmlTech.laserpipe.BlockLaserPipe;
+import net.htmlcsjs.htmlTech.laserpipe.LaserPipeRenderer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.network.NetworkPlayerInfo;
@@ -25,7 +25,7 @@ import javax.annotation.Nonnull;
 import java.util.Map;
 import java.util.UUID;
 
-import static net.htmlcsjs.htmlTech.api.blocks.HTMetaBlocks.LASER_PIPES;
+import static net.htmlcsjs.htmlTech.blocks.HTMetaBlocks.LASER_PIPES;
 
 @SideOnly(Side.CLIENT)
 @Mod.EventBusSubscriber(Side.CLIENT)
