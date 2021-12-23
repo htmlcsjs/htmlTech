@@ -1,9 +1,10 @@
 package net.htmlcsjs.htmlTech;
 
 import gregtech.api.capability.SimpleCapabilityManager;
-import net.htmlcsjs.htmlTech.blocks.HTMetaBlocks;
-import net.htmlcsjs.htmlTech.capability.ILaserContainer;
-import net.htmlcsjs.htmlTech.metatileentity.HTMetaTileEntities;
+import net.htmlcsjs.htmlTech.api.HTValues;
+import net.htmlcsjs.htmlTech.api.capability.ILaserContainer;
+import net.htmlcsjs.htmlTech.common.blocks.HTMetaBlocks;
+import net.htmlcsjs.htmlTech.common.metatileentity.HTMetaTileEntities;
 import net.htmlcsjs.htmlTech.proxy.CommonProxy;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;

@@ -2,14 +2,14 @@ package net.htmlcsjs.htmlTech.proxy;
 
 import gregtech.api.GregTechAPI;
 import gregtech.common.blocks.VariantItemBlock;
-import net.htmlcsjs.htmlTech.HTValues;
+import net.htmlcsjs.htmlTech.api.HTValues;
+import net.htmlcsjs.htmlTech.api.materials.HTMaterials;
+import net.htmlcsjs.htmlTech.api.materials.HTOrePrefix;
+import net.htmlcsjs.htmlTech.api.materials.HTRecipes;
+import net.htmlcsjs.htmlTech.common.item.HTMetaItems;
+import net.htmlcsjs.htmlTech.common.laserpipe.BlockLaserPipe;
+import net.htmlcsjs.htmlTech.common.laserpipe.ItemBlockLaserPipe;
 import net.htmlcsjs.htmlTech.htmlTech;
-import net.htmlcsjs.htmlTech.item.HTMetaItems;
-import net.htmlcsjs.htmlTech.laserpipe.BlockLaserPipe;
-import net.htmlcsjs.htmlTech.laserpipe.ItemBlockLaserPipe;
-import net.htmlcsjs.htmlTech.materials.HTMaterials;
-import net.htmlcsjs.htmlTech.materials.HTOrePrefix;
-import net.htmlcsjs.htmlTech.materials.HTRecipes;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -21,8 +21,8 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.function.Function;
 
-import static net.htmlcsjs.htmlTech.blocks.HTMetaBlocks.HT_CASING;
-import static net.htmlcsjs.htmlTech.blocks.HTMetaBlocks.LASER_PIPES;
+import static net.htmlcsjs.htmlTech.common.blocks.HTMetaBlocks.HT_CASING;
+import static net.htmlcsjs.htmlTech.common.blocks.HTMetaBlocks.LASER_PIPES;
 
 @Mod.EventBusSubscriber(modid = HTValues.MODID)
 public class CommonProxy {
