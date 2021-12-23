@@ -15,7 +15,7 @@ import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.unification.material.Material;
 import gregtech.client.renderer.texture.cube.SimpleOverlayRenderer;
 import gregtech.client.utils.PipelineUtil;
-import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityMultiblockPart;
+import gregtech.common.metatileentities.multi.multiblockpart.MetaTileEntityMultiblockPart;
 import net.htmlcsjs.htmlTech.HTTextures;
 import net.htmlcsjs.htmlTech.capability.ILaserContainer;
 import net.htmlcsjs.htmlTech.capability.LaserContainerHandler;

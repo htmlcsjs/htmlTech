@@ -31,7 +31,7 @@ public class HTOrePrefix {
             int voltage = material.getProperty(LASER).voltage;
             int amperage = material.getProperty(LASER).amperage;
 
-            textList.add(I18n.format("htmltech.laser.voltage", voltage, GTValues.VN[(GTUtility.getTierByVoltage(voltage))]));
+            textList.add(I18n.format("htmltech.laser.voltage", voltage, GTValues.VNF[(GTUtility.getTierByVoltage(voltage))]));
             textList.add(I18n.format("htmltech.laser.amperage", amperage));
             return textList;
         });

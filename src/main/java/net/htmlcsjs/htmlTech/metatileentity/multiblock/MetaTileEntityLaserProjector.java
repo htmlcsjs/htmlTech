@@ -112,7 +112,7 @@ public class MetaTileEntityLaserProjector extends HTMultiblockWithDisplayBase {
         super.addDisplayText(textList);
 
         long voltage = laserContainer.getInputVoltage();//laserContainer.getDiodeVoltage();
-        textList.add(new TextComponentString(I18n.format("htmltech.laser.voltage", voltage, GTValues.VN[(GTUtility.getTierByVoltage(voltage))])));
+        textList.add(new TextComponentString(I18n.format("htmltech.laser.voltage", voltage, GTValues.VNF[(GTUtility.getTierByVoltage(voltage))])));
         textList.add(new TextComponentString(I18n.format("htmltech.laser.amperage", laserContainer.getDiodeAmperage())));
     }
 }
