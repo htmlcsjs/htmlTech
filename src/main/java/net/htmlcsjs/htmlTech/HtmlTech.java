@@ -13,9 +13,9 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.Logger;
 
-@Mod(modid = htmlTech.MODID, name = htmlTech.NAME, version = htmlTech.VERSION,
+@Mod(modid = HtmlTech.MODID, name = HtmlTech.NAME, version = HtmlTech.VERSION,
         dependencies = "required-after:gregtech;")
-public class htmlTech {
+public class HtmlTech {
     public static final String MODID = HTValues.MODID;
     public static final String NAME = HTValues.MOD_NAME;
     public static final String VERSION = HTValues.VERSION;

@@ -2,8 +2,8 @@ package net.htmlcsjs.htmlTech.client;
 
 import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
 import gregtech.client.renderer.texture.cube.SimpleOverlayRenderer;
+import net.htmlcsjs.htmlTech.HtmlTech;
 import net.htmlcsjs.htmlTech.api.HTValues;
-import net.htmlcsjs.htmlTech.htmlTech;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.relauncher.Side;
@@ -23,7 +23,7 @@ public class HTTextures {
     public static void preInit() {
         LASER_INPUT = new SimpleOverlayRenderer("overlay/machine/overlay_laser_in");
         LASER_OUTPUT = new SimpleOverlayRenderer("overlay/machine/overlay_laser_out");
-        HTMLTECH_CAPE = new ResourceLocation(htmlTech.MODID, "textures/htmltech_cape.png");
+        HTMLTECH_CAPE = new ResourceLocation(HtmlTech.MODID, "textures/htmltech_cape.png");
         FLOPPA_CASING = new SimpleOverlayRenderer("casings/floppa_casing");
         LASER_PROJECTOR_OVERLAY = new OrientedOverlayRenderer("overlay/multi/laser_projector",  FRONT);
         LASER_COLLECTOR_OVERLAY = new OrientedOverlayRenderer("overlay/multi/laser_collector",  FRONT);

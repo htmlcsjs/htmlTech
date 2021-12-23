@@ -16,10 +16,10 @@ import gregtech.api.unification.material.Material;
 import gregtech.client.renderer.texture.cube.SimpleOverlayRenderer;
 import gregtech.client.utils.PipelineUtil;
 import gregtech.common.metatileentities.multi.multiblockpart.MetaTileEntityMultiblockPart;
+import net.htmlcsjs.htmlTech.HtmlTech;
 import net.htmlcsjs.htmlTech.api.capability.ILaserContainer;
 import net.htmlcsjs.htmlTech.api.capability.LaserContainerHandler;
 import net.htmlcsjs.htmlTech.client.HTTextures;
-import net.htmlcsjs.htmlTech.htmlTech;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
@@ -94,7 +94,7 @@ public class MetaTileEntityLaserHatch extends MetaTileEntityMultiblockPart imple
                 laserEnergyContainer.setDiodeVoltage(0);
                 laserEnergyContainer.setDiodeAmperage(0);
             }
-            htmlTech.logger.debug("New diode: " + laserEnergyContainer.getDiodeAmperage() + "A, " + laserEnergyContainer.getDiodeVoltage() + "Eu/t");
+            HtmlTech.logger.debug("New diode: " + laserEnergyContainer.getDiodeAmperage() + "A, " + laserEnergyContainer.getDiodeVoltage() + "Eu/t");
         }
     }
 

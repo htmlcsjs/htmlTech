@@ -2,6 +2,7 @@ package net.htmlcsjs.htmlTech.proxy;
 
 import gregtech.api.GregTechAPI;
 import gregtech.common.blocks.VariantItemBlock;
+import net.htmlcsjs.htmlTech.HtmlTech;
 import net.htmlcsjs.htmlTech.api.HTValues;
 import net.htmlcsjs.htmlTech.api.materials.HTMaterials;
 import net.htmlcsjs.htmlTech.api.materials.HTOrePrefix;
@@ -9,7 +10,6 @@ import net.htmlcsjs.htmlTech.api.materials.HTRecipes;
 import net.htmlcsjs.htmlTech.common.item.HTMetaItems;
 import net.htmlcsjs.htmlTech.common.laserpipe.BlockLaserPipe;
 import net.htmlcsjs.htmlTech.common.laserpipe.ItemBlockLaserPipe;
-import net.htmlcsjs.htmlTech.htmlTech;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -37,13 +37,13 @@ public class CommonProxy {
 
     @SubscribeEvent
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-        htmlTech.logger.info("Registering Recipes");
+        HtmlTech.logger.info("Registering Recipes");
         HTRecipes.init();
     }
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
-        htmlTech.logger.info("Registering Blocks");
+        HtmlTech.logger.info("Registering Blocks");
         IForgeRegistry<Block> registry = event.getRegistry();
         for(BlockLaserPipe pipe : LASER_PIPES) registry.register(pipe);
         registry.register(HT_CASING);
@@ -51,7 +51,7 @@ public class CommonProxy {
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
-        htmlTech.logger.info("Registering Items");
+        HtmlTech.logger.info("Registering Items");
         IForgeRegistry<Item> registry = event.getRegistry();
         for(BlockLaserPipe pipe : LASER_PIPES) registry.register(createItemBlock(pipe, ItemBlockLaserPipe::new));
 

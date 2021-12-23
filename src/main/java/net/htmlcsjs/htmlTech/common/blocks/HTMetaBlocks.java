@@ -1,9 +1,9 @@
 package net.htmlcsjs.htmlTech.common.blocks;
 
+import net.htmlcsjs.htmlTech.HtmlTech;
 import net.htmlcsjs.htmlTech.common.laserpipe.BlockLaserPipe;
 import net.htmlcsjs.htmlTech.common.laserpipe.LaserPipeType;
 import net.htmlcsjs.htmlTech.common.laserpipe.tile.TileEntityLaserPipe;
-import net.htmlcsjs.htmlTech.htmlTech;
 import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
@@ -31,7 +31,7 @@ public class HTMetaBlocks {
             LASER_PIPES[type.ordinal()].setRegistryName(String.format("laser_pipe_%s", type.name));
         }
 
-        GameRegistry.registerTileEntity(TileEntityLaserPipe.class, new ResourceLocation(htmlTech.MODID, "laser_pipe"));
+        GameRegistry.registerTileEntity(TileEntityLaserPipe.class, new ResourceLocation(HtmlTech.MODID, "laser_pipe"));
 
         // Basic Blocks
         HT_CASING = new BlockHTCasing();

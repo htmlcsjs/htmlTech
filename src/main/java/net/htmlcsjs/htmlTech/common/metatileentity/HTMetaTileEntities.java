@@ -2,11 +2,11 @@ package net.htmlcsjs.htmlTech.common.metatileentity;
 
 import gregtech.api.GTValues;
 import gregtech.common.metatileentities.MetaTileEntities;
+import net.htmlcsjs.htmlTech.HtmlTech;
 import net.htmlcsjs.htmlTech.api.HTValues;
 import net.htmlcsjs.htmlTech.common.metatileentity.multiblock.MetaTileEntityLaserCollector;
 import net.htmlcsjs.htmlTech.common.metatileentity.multiblock.MetaTileEntityLaserProjector;
 import net.htmlcsjs.htmlTech.common.metatileentity.multiblock.multiblockpart.MetaTileEntityLaserHatch;
-import net.htmlcsjs.htmlTech.htmlTech;
 import net.minecraft.util.ResourceLocation;
 
 public class HTMetaTileEntities {
@@ -22,7 +22,7 @@ public class HTMetaTileEntities {
      * avaible ids: 9000-9499
      */
     public static void init() {
-        htmlTech.logger.info("registering htmlTech Tile Entities");
+        HtmlTech.logger.info("registering htmlTech Tile Entities");
 
         LASER_PROJECTOR = MetaTileEntities.registerMetaTileEntity(9000, new MetaTileEntityLaserProjector(location("laser_projector")));
         LASER_OUTPUT_HATCH = MetaTileEntities.registerMetaTileEntity(9001, new MetaTileEntityLaserHatch(location("laser_output_hatch"), 7, true));

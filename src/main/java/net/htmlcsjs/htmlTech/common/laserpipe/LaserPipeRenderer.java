@@ -20,8 +20,8 @@ import gregtech.api.pipenet.block.simple.EmptyNodeData;
 import gregtech.api.pipenet.tile.IPipeTile;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.ModCompatibility;
+import net.htmlcsjs.htmlTech.HtmlTech;
 import net.htmlcsjs.htmlTech.common.laserpipe.tile.TileEntityLaserPipe;
-import net.htmlcsjs.htmlTech.htmlTech;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
@@ -58,7 +58,7 @@ public class LaserPipeRenderer implements ICCBlockRenderer, IItemRenderer {
     private final Map<LaserPipeType, PipeTextureInfo> pipeTextures = new HashMap();
 
     public static void preInit() {
-        htmlTech.logger.info("initializing laser pipe renderer");
+        HtmlTech.logger.info("initializing laser pipe renderer");
         BLOCK_RENDER_TYPE = BlockRenderingRegistry.createRenderType("ht_laser_pipe");
         BlockRenderingRegistry.registerRenderer(BLOCK_RENDER_TYPE, INSTANCE);
         MinecraftForge.EVENT_BUS.register(INSTANCE);
@@ -67,8 +67,8 @@ public class LaserPipeRenderer implements ICCBlockRenderer, IItemRenderer {
 
     public void registerIcons(TextureMap map) {
         for (LaserPipeType laserPipeType : LaserPipeType.values()) {
-            ResourceLocation inLocation = new ResourceLocation(htmlTech.MODID, String.format("blocks/pipe/laser_%s", laserPipeType.name));
-            ResourceLocation sideLocation = new ResourceLocation(htmlTech.MODID, String.format("blocks/pipe/laser_%s", laserPipeType.name));
+            ResourceLocation inLocation = new ResourceLocation(HtmlTech.MODID, String.format("blocks/pipe/laser_%s", laserPipeType.name));
+            ResourceLocation sideLocation = new ResourceLocation(HtmlTech.MODID, String.format("blocks/pipe/laser_%s", laserPipeType.name));
 
             TextureAtlasSprite inTexture = map.registerSprite(inLocation);
             TextureAtlasSprite sideTexture = map.registerSprite(sideLocation);
@@ -78,7 +78,7 @@ public class LaserPipeRenderer implements ICCBlockRenderer, IItemRenderer {
 
     @SubscribeEvent
     public void onModelsBake(ModelBakeEvent event) {
-        htmlTech.logger.info("registering laser pipe model");
+        HtmlTech.logger.info("registering laser pipe model");
         event.getModelRegistry().putObject(MODEL_LOCATION, this);
     }
 
@@ -114,7 +114,7 @@ public class LaserPipeRenderer implements ICCBlockRenderer, IItemRenderer {
         TileEntityLaserPipe tileEntityPipe = (TileEntityLaserPipe) blockFluidPipe.getPipeTileEntity(world, pos);
 
         if (tileEntityPipe == null) {
-            htmlTech.logger.info("Tile is null");
+            HtmlTech.logger.info("Tile is null");
             return false;
         }
 
@@ -123,7 +123,7 @@ public class LaserPipeRenderer implements ICCBlockRenderer, IItemRenderer {
         int connectedSidesMap = blockFluidPipe.getVisualConnections(tileEntityPipe);
 
         if (fluidPipeType != null) {
-            htmlTech.logger.debug("Rendering laser pipe block");
+            HtmlTech.logger.debug("Rendering laser pipe block");
             BlockRenderLayer renderLayer = MinecraftForgeClient.getRenderLayer();
 
             if (renderLayer == BlockRenderLayer.CUTOUT)
