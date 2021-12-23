@@ -19,7 +19,7 @@ public class LaserContainerHandler extends MTETrait implements ILaserContainer {
     private long diodeAmperage;
 
     private final long maxCapacity;
-    private long energyStored;
+    private long laserEnergyStored;
 
     private final long maxInputVoltage;
     private final long maxInputAmperage;
@@ -88,7 +88,7 @@ public class LaserContainerHandler extends MTETrait implements ILaserContainer {
     }
 
     public String getName() {
-        return "EnergyContainer";
+        return "LaserContainer";
     }
 
     @Override
@@ -99,23 +99,23 @@ public class LaserContainerHandler extends MTETrait implements ILaserContainer {
     @Override
     public NBTTagCompound serializeNBT() {
         NBTTagCompound compound = new NBTTagCompound();
-        compound.setLong("EnergyStored", energyStored);
+        compound.setLong("LaserEnergyStored", laserEnergyStored);
         return compound;
     }
 
     @Override
     public void deserializeNBT(NBTTagCompound compound) {
-        this.energyStored = compound.getLong("LaserEnergyStored");
+        this.laserEnergyStored = compound.getLong("LaserEnergyStored");
         notifyEnergyListener(true);
     }
 
     @Override
     public long getEnergyStored() {
-        return this.energyStored;
+        return this.laserEnergyStored;
     }
 
-    public void setEnergyStored(long energyStored) {
-        this.energyStored = energyStored;
+    public void setEnergyStored(long laserEnergyStored) {
+        this.laserEnergyStored = laserEnergyStored;
         if (!metaTileEntity.getWorld().isRemote) {
             metaTileEntity.markDirty();
             notifyEnergyListener(false);

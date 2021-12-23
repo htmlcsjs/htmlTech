@@ -34,18 +34,16 @@ public class MetaTileEntityLaserHatch extends MetaTileEntityMultiblockPart imple
     private final ItemStackHandler laserInventory;
     private final ILaserContainer laserEnergyContainer;
     private final boolean isEmitter;
-    private ItemStackHandler diodeItem;
 
     public MetaTileEntityLaserHatch(ResourceLocation metaTileEntityId, int tier, boolean isEmitter) {
         super(metaTileEntityId, tier);
         this.laserInventory = new ItemStackHandler(1);
         this.isEmitter = isEmitter;
-        this.diodeItem = new ItemStackHandler(1);
         if (isEmitter) {
-            this.laserEnergyContainer = LaserContainerHandler.emitterContainer(this, GTValues.V[14] * 128L, GTValues.V[14], Integer.MAX_VALUE);
+            this.laserEnergyContainer = LaserContainerHandler.emitterContainer(this, GTValues.V[14] * Short.MAX_VALUE, GTValues.V[14], Short.MAX_VALUE);
             ((LaserContainerHandler) this.laserEnergyContainer).setSideOutputCondition(s -> s == getFrontFacing());
         } else {
-            this.laserEnergyContainer = LaserContainerHandler.receiverContainer(this, GTValues.V[14] * 128L, GTValues.V[14], Integer.MAX_VALUE * 2L);
+            this.laserEnergyContainer = LaserContainerHandler.receiverContainer(this, GTValues.V[tier] * Short.MAX_VALUE, GTValues.V[tier], Short.MAX_VALUE);
         }
     }
 
@@ -82,10 +80,8 @@ public class MetaTileEntityLaserHatch extends MetaTileEntityMultiblockPart imple
     @Override
     public void update() {
         super.update();
-        if ((isEmitter && !laserInventory.equals(diodeItem)) && getOffsetTimer() % 20 == 0) {
-            diodeItem = laserInventory;
-
-            Item laserItem = diodeItem.getStackInSlot(0).getItem();
+        if (isEmitter && getOffsetTimer() % 20 == 0) {
+            Item laserItem = laserInventory.getStackInSlot(0).getItem();
             if (laserItem.getRegistryName().toString().equals("gregtech:meta_laser")) {
                 Material material = GregTechAPI.MATERIAL_REGISTRY.getObjectById(laserItem.getDamage(laserInventory.getStackInSlot(0)));
                 laserEnergyContainer.setDiodeAmperage(material.getProperty(LASER).amperage);
@@ -124,6 +120,7 @@ public class MetaTileEntityLaserHatch extends MetaTileEntityMultiblockPart imple
         super.readFromNBT(data);
         this.laserInventory.deserializeNBT(data.getCompoundTag("LaserInventory"));
     }
+
 
 }
 

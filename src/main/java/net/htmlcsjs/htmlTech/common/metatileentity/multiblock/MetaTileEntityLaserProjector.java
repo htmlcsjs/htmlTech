@@ -19,6 +19,7 @@ import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
+import net.htmlcsjs.htmlTech.HtmlTech;
 import net.htmlcsjs.htmlTech.api.capability.ILaserContainer;
 import net.htmlcsjs.htmlTech.api.capability.LaserContainerList;
 import net.htmlcsjs.htmlTech.api.metatileentity.multiblock.HTMultiblockWithDisplayBase;
@@ -53,8 +54,17 @@ public class MetaTileEntityLaserProjector extends HTMultiblockWithDisplayBase {
         return laserContainer;
     }
 
+    public List<ILaserContainer> getLaserAbiltities() {
+        return this.getAbilities(HTMultiblockAbility.OUTPUT_LASER);
+    }
+
     @Override
     protected void updateFormedValid() {
+        long voltage = getLaserAbiltities().isEmpty() ? 0 : getLaserAbiltities().get(0).getDiodeVoltage();
+        long amperage = getLaserAbiltities().isEmpty() ? 0 : getLaserAbiltities().get(0).getDiodeAmperage();
+        long energyAdded = new EnergyContainerList(this.getAbilities(MultiblockAbility.INPUT_ENERGY)).removeEnergy(voltage * amperage) * -1L;
+        getLaserAbiltities().get(0).addEnergy(energyAdded);
+        HtmlTech.logger.info(energyAdded + " EU was taken from enet and put in lnet");
     }
 
 
@@ -111,8 +121,9 @@ public class MetaTileEntityLaserProjector extends HTMultiblockWithDisplayBase {
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
 
-        long voltage = laserContainer.getInputVoltage();//laserContainer.getDiodeVoltage();
+        long voltage = getLaserAbiltities().isEmpty() ? 0 : getLaserAbiltities().get(0).getDiodeVoltage();
+        long amperage = getLaserAbiltities().isEmpty() ? 0 : getLaserAbiltities().get(0).getDiodeAmperage();
         textList.add(new TextComponentString(I18n.format("htmltech.laser.voltage", voltage, GTValues.VNF[(GTUtility.getTierByVoltage(voltage))])));
-        textList.add(new TextComponentString(I18n.format("htmltech.laser.amperage", laserContainer.getDiodeAmperage())));
+        textList.add(new TextComponentString(I18n.format("htmltech.laser.amperage", amperage)));
     }
 }
