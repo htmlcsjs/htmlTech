@@ -20,12 +20,16 @@ import net.htmlcsjs.htmlTech.HtmlTech;
 import net.htmlcsjs.htmlTech.api.capability.ILaserContainer;
 import net.htmlcsjs.htmlTech.api.capability.LaserContainerHandler;
 import net.htmlcsjs.htmlTech.client.HTTextures;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
 import net.minecraftforge.items.ItemStackHandler;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 import static net.htmlcsjs.htmlTech.api.materials.HTMaterials.LASER;
@@ -109,6 +113,19 @@ public class MetaTileEntityLaserHatch extends MetaTileEntityMultiblockPart imple
     }
 
     @Override
+    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+        String tierName = GTValues.VNF[getTier()];
+
+        if (isEmitter) {
+            // TODO: tooltip description
+        } else {
+            tooltip.add(I18n.format("gregtech.universal.tooltip.voltage_in", laserEnergyContainer.getInputVoltage(), tierName));
+            tooltip.add(I18n.format("gregtech.universal.tooltip.amperage_in_till", laserEnergyContainer.getInputAmperage()));
+        }
+        tooltip.add(I18n.format("gregtech.universal.enabled"));
+    }
+
+    @Override
     public NBTTagCompound writeToNBT(NBTTagCompound data) {
         super.writeToNBT(data);
         data.setTag("LaserInventory", laserInventory.serializeNBT());
@@ -120,7 +137,5 @@ public class MetaTileEntityLaserHatch extends MetaTileEntityMultiblockPart imple
         super.readFromNBT(data);
         this.laserInventory.deserializeNBT(data.getCompoundTag("LaserInventory"));
     }
-
-
 }
 

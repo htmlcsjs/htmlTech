@@ -1,10 +1,12 @@
 package net.htmlcsjs.htmlTech;
 
+import gregtech.api.GTValues;
 import gregtech.api.capability.SimpleCapabilityManager;
 import net.htmlcsjs.htmlTech.api.HTValues;
 import net.htmlcsjs.htmlTech.api.capability.ILaserContainer;
 import net.htmlcsjs.htmlTech.common.blocks.HTMetaBlocks;
 import net.htmlcsjs.htmlTech.common.metatileentity.HTMetaTileEntities;
+import net.htmlcsjs.htmlTech.integration.theoneprobe.HTTOPCompatibility;
 import net.htmlcsjs.htmlTech.proxy.CommonProxy;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -37,5 +39,10 @@ public class HtmlTech {
     @EventHandler
     public void init(FMLInitializationEvent event) {
         proxy.init();
+
+        if (GTValues.isModLoaded(HTValues.MODID_TOP)) {
+            logger.info("TheOneProbe found. Enabling integration...");
+            HTTOPCompatibility.registerCompatibility();
+        }
     }
 }
