@@ -21,7 +21,7 @@ public class LaserContainerInfoProvider extends CapabilityInfoProvider<ILaserCon
 
     @Override
     public String getID() {
-        return HTValues.MODID + ":laser_contanier_provider";
+        return String.format("%s:laser_container_provider", HTValues.MODID);
     }
 
     @Override

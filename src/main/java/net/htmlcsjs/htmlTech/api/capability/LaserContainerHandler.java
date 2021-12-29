@@ -160,9 +160,9 @@ public class LaserContainerHandler extends MTETrait implements ILaserContainer {
         amps = 0;
         if (getMetaTileEntity().getWorld().isRemote)
             return;
-        if (getEnergyStored() >= getOutputVoltage() && getOutputVoltage() > 0 && getOutputAmperage() > 0) {
-            long outputVoltage = getOutputVoltage();
-            long outputAmperes = Math.min(getEnergyStored() / outputVoltage, getOutputAmperage());
+        if (getEnergyStored() >= getDiodeVoltage() && getDiodeVoltage() > 0 && getDiodeAmperage() > 0) {
+            long outputVoltage = getDiodeVoltage();
+            long outputAmperes = Math.min(getEnergyStored() / outputVoltage, getDiodeAmperage());
             if (outputAmperes == 0) return;
             long amperesUsed = 0;
             for (EnumFacing side : EnumFacing.VALUES) {
