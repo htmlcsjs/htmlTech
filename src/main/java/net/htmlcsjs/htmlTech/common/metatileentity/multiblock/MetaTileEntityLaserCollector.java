@@ -17,7 +17,6 @@ import gregtech.api.util.GTUtility;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
-import net.htmlcsjs.htmlTech.HtmlTech;
 import net.htmlcsjs.htmlTech.api.capability.ILaserContainer;
 import net.htmlcsjs.htmlTech.api.capability.LaserContainerList;
 import net.htmlcsjs.htmlTech.api.metatileentity.multiblock.HTMultiblockWithDisplayBase;
@@ -67,7 +66,7 @@ public class MetaTileEntityLaserCollector extends HTMultiblockWithDisplayBase {
         long amperage = getLaserAbiltities().isEmpty() ? 0 : new LaserContainerList(getLaserAbiltities()).getInputAmperage();
         long energyAdded = new LaserContainerList(getLaserAbiltities()).removeEnergy(voltage * amperage) * -1L;
         new EnergyContainerList(this.getAbilities(MultiblockAbility.OUTPUT_ENERGY)).addEnergy(energyAdded);
-        HtmlTech.logger.info(energyAdded + " EU was taken from lnet and put in enet");
+        //HtmlTech.logger.info(energyAdded + " EU was taken from lnet and put in enet");
     }
 
     @Override
