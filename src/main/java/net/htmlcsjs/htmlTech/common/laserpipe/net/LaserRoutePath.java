@@ -1,7 +1,7 @@
 package net.htmlcsjs.htmlTech.common.laserpipe.net;
 
-import gregtech.api.capability.GregtechCapabilities;
-import gregtech.api.capability.IEnergyContainer;
+import net.htmlcsjs.htmlTech.api.capability.HtmlTechCapabilities;
+import net.htmlcsjs.htmlTech.api.capability.ILaserContainer;
 import net.htmlcsjs.htmlTech.common.laserpipe.tile.TileEntityLaserPipe;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -43,10 +43,10 @@ public class LaserRoutePath {
         return destPipePos.offset(destFacing);
     }
 
-    public IEnergyContainer getHandler(World world) {
+    public ILaserContainer getHandler(World world) {
         TileEntity tile = world.getTileEntity(getHandlerPos());
         if(tile != null) {
-            return tile.getCapability(GregtechCapabilities.CAPABILITY_ENERGY_CONTAINER, destFacing.getOpposite());
+            return tile.getCapability(HtmlTechCapabilities.LASER_CONTAINER, destFacing.getOpposite());
         }
         return null;
     }

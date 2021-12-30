@@ -1,6 +1,5 @@
 package net.htmlcsjs.htmlTech.common.laserpipe.net;
 
-import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.util.GTUtility;
 import net.htmlcsjs.htmlTech.HtmlTech;
 import net.htmlcsjs.htmlTech.api.capability.ILaserContainer;
@@ -44,23 +43,20 @@ public class PipeLaserContainer implements ILaserContainer {
 
         long amperesUsed = 0L;
         List<LaserRoutePath> paths = net.getNetData(cable.getPos());
-        outer:
         for (LaserRoutePath path : paths) {
             if (GTUtility.arePosEqual(cable.getPos(), path.getPipePos()) && side == path.getFaceToHandler()) {
                 //Do not insert into source handler
                 continue;
             }
-            IEnergyContainer dest = path.getHandler(cable.getWorld());
+            ILaserContainer dest = path.getHandler(cable.getWorld());
             EnumFacing facing = path.getFaceToHandler().getOpposite();
             if (dest == null || !dest.inputsEnergy(facing) || dest.getEnergyCanBeInserted() <= 0) continue;
             long amps = 0;
             if (voltage > 0) {
                 amps = dest.acceptEnergyFromNetwork(facing, voltage, amperage - amperesUsed);
             }
-            amperesUsed += amps;;
+            amperesUsed += amps;
             for (TileEntityLaserPipe cable : path.getPath()) {
-                if(voltage <= 0)
-                    break;
                 cable.incrementAmperage(amps, voltage);
             }
 
