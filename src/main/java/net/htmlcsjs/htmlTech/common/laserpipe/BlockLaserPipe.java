@@ -67,8 +67,8 @@ public class BlockLaserPipe extends BlockSimplePipe<LaserPipeType, EmptyNodeData
     }
 
     @Override
-    public boolean canPipesConnect(IPipeTile iPipeTile, EnumFacing enumFacing, IPipeTile iPipeTile1) {
-        return iPipeTile1 instanceof TileEntityLaserPipe && iPipeTile1.getInsulationColor() == iPipeTile.getInsulationColor();
+    public boolean canPipesConnect(IPipeTile pipeTile, EnumFacing enumFacing, IPipeTile pipeTile1) {
+        return pipeTile1 instanceof TileEntityLaserPipe && pipeTile1.getPaintingColor() == pipeTile.getPaintingColor();
     }
 
     @Override

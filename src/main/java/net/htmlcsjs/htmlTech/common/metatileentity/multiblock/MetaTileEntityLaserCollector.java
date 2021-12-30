@@ -103,7 +103,7 @@ public class MetaTileEntityLaserCollector extends HTMultiblockWithDisplayBase {
 
     @Nullable
     protected IBlockState getCasingState() {
-        return HTMetaBlocks.HT_CASING.getState(BlockHTCasing.CasingType.FLOPPA_CASING);
+        return HTMetaBlocks.HT_CASING.getState(BlockHTCasing.CasingType.PBI_CASING);
     }
 
     @Nonnull

@@ -8,9 +8,9 @@
   },
   "variants": {
     "variant": {
-      "floppa_casing": {
+      "pbi_casing": {
         "textures": {
-          "all": "gregtech:blocks/casings/floppa_casing"
+          "all": "gregtech:blocks/casings/pbi_casing"
         }
       }
     }

@@ -7,6 +7,7 @@ import gregtech.api.unification.material.properties.PropertyKey;
 
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.DECOMPOSITION_BY_ELECTROLYZING;
+import static gregtech.api.unification.material.info.MaterialFlags.GENERATE_FOIL;
 import static gregtech.api.unification.material.info.MaterialIconSet.SHINY;
 
 public class HTMaterials {
@@ -38,17 +39,15 @@ public class HTMaterials {
         // Adding Flags to Materials
         Diamond.setProperty(LASER, new LaserProperties((int) GTValues.V[5], 128, 2));
         Ruby.setProperty(LASER, new LaserProperties((int) GTValues.V[6], 256, 2));
+
+        Protactinium.setHidden(false);
+        Flerovium.setHidden(false);
+
+        RhodiumPlatedPalladium.addFlags(GENERATE_FOIL);
     }
 
     public static void init() {
-        //htmlTech.logger.info("Register Htmltech materials");
+        //HtmlTech.logger.info("Register htmltech materials"); WHY TF DOES THIS CRASH
         register();
     }
-
-    // Properties Builders
-/*
-    public Material.Builder laserProperties(long voltage, int amperage, double efficiency) {
-        properties.setProperty(LASER, new LaserProperties((int) voltage, amperage, efficiency));
-        return this;
-    }*/
 }

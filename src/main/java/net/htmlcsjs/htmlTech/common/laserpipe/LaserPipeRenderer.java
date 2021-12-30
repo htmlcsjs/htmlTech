@@ -119,7 +119,7 @@ public class LaserPipeRenderer implements ICCBlockRenderer, IItemRenderer {
         }
 
         LaserPipeType fluidPipeType = tileEntityPipe.getPipeType();
-        int paintingColor = tileEntityPipe.getInsulationColor();
+        int paintingColor = tileEntityPipe.getPaintingColor();
         int connectedSidesMap = blockFluidPipe.getVisualConnections(tileEntityPipe);
 
         if (fluidPipeType != null) {

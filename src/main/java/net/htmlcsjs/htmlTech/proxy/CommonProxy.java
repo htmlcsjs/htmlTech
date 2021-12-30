@@ -6,10 +6,10 @@ import net.htmlcsjs.htmlTech.HtmlTech;
 import net.htmlcsjs.htmlTech.api.HTValues;
 import net.htmlcsjs.htmlTech.api.materials.HTMaterials;
 import net.htmlcsjs.htmlTech.api.materials.HTOrePrefix;
-import net.htmlcsjs.htmlTech.api.materials.HTRecipes;
 import net.htmlcsjs.htmlTech.common.item.HTMetaItems;
 import net.htmlcsjs.htmlTech.common.laserpipe.BlockLaserPipe;
 import net.htmlcsjs.htmlTech.common.laserpipe.ItemBlockLaserPipe;
+import net.htmlcsjs.htmlTech.loaders.HTRecipeManiger;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -38,7 +38,7 @@ public class CommonProxy {
     @SubscribeEvent
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
         HtmlTech.logger.info("Registering Recipes");
-        HTRecipes.init();
+        HTRecipeManiger.init();
     }
 
     @SubscribeEvent
