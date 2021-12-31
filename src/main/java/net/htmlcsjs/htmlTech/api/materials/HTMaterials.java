@@ -6,8 +6,7 @@ import gregtech.api.unification.material.info.MaterialFlag;
 import gregtech.api.unification.material.properties.PropertyKey;
 
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.material.info.MaterialFlags.DECOMPOSITION_BY_ELECTROLYZING;
-import static gregtech.api.unification.material.info.MaterialFlags.GENERATE_FOIL;
+import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gregtech.api.unification.material.info.MaterialIconSet.SHINY;
 
 public class HTMaterials {
@@ -36,14 +35,15 @@ public class HTMaterials {
                 .toolStats(128, 50, 2621440, 128)
                 .build();
 
-        // Adding Flags to Materials
+        // Adding Properties to Materials
         Diamond.setProperty(LASER, new LaserProperties((int) GTValues.V[5], 128, 2));
         Ruby.setProperty(LASER, new LaserProperties((int) GTValues.V[6], 256, 2));
 
+        // Adding Flags to Materials
         Protactinium.setHidden(false);
         Flerovium.setHidden(false);
-
         RhodiumPlatedPalladium.addFlags(GENERATE_FOIL);
+        Trinium.addFlags(GENERATE_FRAME);
     }
 
     public static void init() {

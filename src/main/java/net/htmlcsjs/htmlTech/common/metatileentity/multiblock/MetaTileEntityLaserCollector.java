@@ -15,14 +15,14 @@ import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.util.GTUtility;
 import gregtech.client.renderer.ICubeRenderer;
+import gregtech.client.renderer.texture.Textures;
+import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
 import net.htmlcsjs.htmlTech.api.capability.ILaserContainer;
 import net.htmlcsjs.htmlTech.api.capability.LaserContainerList;
 import net.htmlcsjs.htmlTech.api.metatileentity.multiblock.HTMultiblockWithDisplayBase;
 import net.htmlcsjs.htmlTech.client.HTTextures;
-import net.htmlcsjs.htmlTech.common.blocks.BlockHTCasing;
-import net.htmlcsjs.htmlTech.common.blocks.HTMetaBlocks;
 import net.htmlcsjs.htmlTech.common.metatileentity.multiblock.multiblockpart.HTMultiblockAbility;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -93,7 +93,7 @@ public class MetaTileEntityLaserCollector extends HTMultiblockWithDisplayBase {
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return HTTextures.FLOPPA_CASING;
+        return Textures.ROBUST_HSSE_CASING;
     }
 
     @Override
@@ -103,7 +103,7 @@ public class MetaTileEntityLaserCollector extends HTMultiblockWithDisplayBase {
 
     @Nullable
     protected IBlockState getCasingState() {
-        return HTMetaBlocks.HT_CASING.getState(BlockHTCasing.CasingType.PBI_CASING);
+        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.HSSE_STURDY);
     }
 
     @Nonnull

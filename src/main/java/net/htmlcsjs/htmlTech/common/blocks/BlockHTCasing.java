@@ -20,7 +20,7 @@ public class BlockHTCasing extends VariantBlock<BlockHTCasing.CasingType> {
         this.setResistance(10.0F);
         this.setSoundType(SoundType.METAL);
         this.setHarvestLevel("pickaxe", 2);
-        this.setDefaultState(this.getState(CasingType.PBI_CASING));
+        this.setDefaultState(this.getState(CasingType.NAQ_ALLOY_CASING));
     }
 
     @Override
@@ -29,7 +29,7 @@ public class BlockHTCasing extends VariantBlock<BlockHTCasing.CasingType> {
     }
 
     public enum CasingType implements IStringSerializable {
-        PBI_CASING("pbi_casing");
+        NAQ_ALLOY_CASING("naq_alloy_casing");
 
         private final String name;
 

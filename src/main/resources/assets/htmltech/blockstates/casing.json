@@ -8,9 +8,9 @@
   },
   "variants": {
     "variant": {
-      "pbi_casing": {
+      "naq_alloy_casing": {
         "textures": {
-          "all": "gregtech:blocks/casings/pbi_casing"
+          "all": "gregtech:blocks/casings/naq_alloy_casing"
         }
       }
     }

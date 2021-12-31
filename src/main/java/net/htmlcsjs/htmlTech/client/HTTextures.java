@@ -18,13 +18,13 @@ public class HTTextures {
     public static ResourceLocation HTMLTECH_CAPE;
     public static SimpleOverlayRenderer LASER_INPUT;
     public static SimpleOverlayRenderer LASER_OUTPUT;
-    public static SimpleOverlayRenderer FLOPPA_CASING;
+    public static SimpleOverlayRenderer NAQ_ALLOY_CASING;
 
     public static void preInit() {
         LASER_INPUT = new SimpleOverlayRenderer("overlay/machine/overlay_laser_in");
         LASER_OUTPUT = new SimpleOverlayRenderer("overlay/machine/overlay_laser_out");
         HTMLTECH_CAPE = new ResourceLocation(HtmlTech.MODID, "textures/htmltech_cape.png");
-        FLOPPA_CASING = new SimpleOverlayRenderer("casings/floppa_casing");
+        NAQ_ALLOY_CASING = new SimpleOverlayRenderer("casings/naq_alloy_casing");
         LASER_PROJECTOR_OVERLAY = new OrientedOverlayRenderer("overlay/multi/laser_projector",  FRONT);
         LASER_COLLECTOR_OVERLAY = new OrientedOverlayRenderer("overlay/multi/laser_collector",  FRONT);
         LASER_REFLECTOR_OVERLAY = new OrientedOverlayRenderer("overlay/multi/laser_reflector",  FRONT);
