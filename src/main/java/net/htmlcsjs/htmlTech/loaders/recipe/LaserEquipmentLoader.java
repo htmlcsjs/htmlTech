@@ -1,6 +1,7 @@
 package net.htmlcsjs.htmlTech.loaders.recipe;
 
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
+import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.loaders.recipe.CraftingComponent;
 import net.htmlcsjs.htmlTech.common.HTConfig;
@@ -16,10 +17,12 @@ import static net.htmlcsjs.htmlTech.api.HTValues.mteLength;
 import static net.htmlcsjs.htmlTech.common.blocks.HTMetaBlocks.HT_CASING;
 import static net.htmlcsjs.htmlTech.common.blocks.HTMetaBlocks.LASER_PIPES;
 import static net.htmlcsjs.htmlTech.common.metatileentity.HTMetaTileEntities.LASER_INPUT_HATCHES;
+import static net.htmlcsjs.htmlTech.common.metatileentity.HTMetaTileEntities.LASER_OUTPUT_HATCH;
 
 public class LaserEquipmentLoader {
 
     public static void init() {
+        // Vacuum pipes
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(wireFine, BorosilicateGlass, 8)
                 .input(foil, Silver, 8)
@@ -30,6 +33,7 @@ public class LaserEquipmentLoader {
                 .duration(40)
                 .buildAndRegister();
 
+        // Naq alloy casing
         ASSEMBLER_RECIPES.recipeBuilder()
                 .EUt(16)
                 .input(plate, NaquadahAlloy, 6)
@@ -39,6 +43,7 @@ public class LaserEquipmentLoader {
                 .duration(50)
                 .buildAndRegister();
 
+        // Laser Collecting hatches
         for (int i = HTConfig.lasers.minLaserTier; i < mteLength; i++) {
             ASSEMBLER_RECIPES.recipeBuilder()
                     .input(HULL[i])
@@ -48,10 +53,24 @@ public class LaserEquipmentLoader {
                     .input(foil, ((UnificationEntry) CraftingComponent.PLATE.getIngredient(i)).material, 4)
                     .input(circuit, ((UnificationEntry) CraftingComponent.CIRCUIT.getIngredient(i)).material)
                     .output(LASER_INPUT_HATCHES[i])
-                    .EUt((int) V[i-1]/2)
+                    .EUt((int) V[i - 1] / 2)
                     .duration(100)
                     .buildAndRegister();
         }
+
+        // Laser Emitter hatch
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(HULL[ZPM])
+                .input(circuit, MarkerMaterials.Tier.Ultimate)
+                .input(lens, Glass)
+                .input(wireFine, UraniumRhodiumDinaquadide, 4)
+                .input(foil, Silver, 2)
+                .output(LASER_OUTPUT_HATCH)
+                .EUt((int) V[ZPM]/2)
+                .duration(100)
+                .buildAndRegister();
+
+
 
     }
 }
