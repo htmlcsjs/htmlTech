@@ -4,6 +4,7 @@ import gregtech.api.GTValues;
 import gregtech.common.metatileentities.MetaTileEntities;
 import net.htmlcsjs.htmlTech.HtmlTech;
 import net.htmlcsjs.htmlTech.api.HTValues;
+import net.htmlcsjs.htmlTech.common.HTConfig;
 import net.htmlcsjs.htmlTech.common.metatileentity.multiblock.MetaTileEntityLaserCollector;
 import net.htmlcsjs.htmlTech.common.metatileentity.multiblock.MetaTileEntityLaserProjector;
 import net.htmlcsjs.htmlTech.common.metatileentity.multiblock.multiblockpart.MetaTileEntityLaserHatch;
@@ -26,7 +27,9 @@ public class HTMetaTileEntities {
 
         LASER_PROJECTOR = MetaTileEntities.registerMetaTileEntity(9000, new MetaTileEntityLaserProjector(location("laser_projector")));
         LASER_OUTPUT_HATCH = MetaTileEntities.registerMetaTileEntity(9001, new MetaTileEntityLaserHatch(location("laser_output_hatch"), 7, true));
-        for (int i = 0; i < 15; i++) {
+
+        int endPos = GTValues.HT ? LASER_INPUT_HATCHES.length - 1 : Math.min(LASER_INPUT_HATCHES.length - 1, GTValues.UHV + 1);
+        for (int i = HTConfig.lasers.minLaserTier; i < endPos; i++) {
             LASER_INPUT_HATCHES[i] = new MetaTileEntityLaserHatch(location("laser_input_hatch." + GTValues.VN[i].toLowerCase()), i, false);
             MetaTileEntities.registerMetaTileEntity(9002 + i, LASER_INPUT_HATCHES[i]);
         }
