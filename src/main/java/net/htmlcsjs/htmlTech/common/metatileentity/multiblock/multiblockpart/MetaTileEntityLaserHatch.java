@@ -32,7 +32,7 @@ import net.minecraftforge.items.ItemStackHandler;
 import javax.annotation.Nullable;
 import java.util.List;
 
-import static net.htmlcsjs.htmlTech.api.materials.HTMaterials.LASER;
+import static net.htmlcsjs.htmlTech.api.unification.materials.HTMaterials.LASER;
 
 public class MetaTileEntityLaserHatch extends MetaTileEntityMultiblockPart implements IMultiblockAbilityPart<ILaserContainer> {
     private final ItemStackHandler laserInventory;

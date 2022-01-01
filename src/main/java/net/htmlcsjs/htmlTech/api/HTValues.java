@@ -1,5 +1,7 @@
 package net.htmlcsjs.htmlTech.api;
 
+import gregtech.api.GTValues;
+
 public class HTValues {
 
     /**
@@ -19,4 +21,9 @@ public class HTValues {
      * SHOULD ALWAYS BE "@VERSION@" IN REPO
      */
     public static final String VERSION = "@VERSION@";
+
+    /**
+     * Length of MTE arrys depending on if GTValues.HT is set
+     */
+    public static final int mteLength = GTValues.HT ? GTValues.V.length - 1 : Math.min(GTValues.V.length - 1, GTValues.UV + 1);
 }

@@ -1,4 +1,4 @@
-package net.htmlcsjs.htmlTech.api.materials;
+package net.htmlcsjs.htmlTech.api.unification.materials;
 
 import gregtech.api.unification.material.properties.IMaterialProperty;
 import gregtech.api.unification.material.properties.MaterialProperties;

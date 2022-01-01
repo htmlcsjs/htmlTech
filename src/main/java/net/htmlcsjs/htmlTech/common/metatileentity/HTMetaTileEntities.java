@@ -17,7 +17,6 @@ public class HTMetaTileEntities {
     public static final MetaTileEntityLaserHatch[] LASER_INPUT_HATCHES = new MetaTileEntityLaserHatch[GTValues.V.length];
     public static MetaTileEntityLaserCollector LASER_COLLECTOR;
 
-
     /**
      * Inits MTEs for htmlTech
      * avaible ids: 9000-9499
@@ -28,8 +27,7 @@ public class HTMetaTileEntities {
         LASER_PROJECTOR = MetaTileEntities.registerMetaTileEntity(9000, new MetaTileEntityLaserProjector(location("laser_projector")));
         LASER_OUTPUT_HATCH = MetaTileEntities.registerMetaTileEntity(9001, new MetaTileEntityLaserHatch(location("laser_output_hatch"), 7, true));
 
-        int endPos = GTValues.HT ? LASER_INPUT_HATCHES.length - 1 : Math.min(LASER_INPUT_HATCHES.length - 1, GTValues.UHV + 1);
-        for (int i = HTConfig.lasers.minLaserTier; i < endPos; i++) {
+        for (int i = HTConfig.lasers.minLaserTier; i < HTValues.mteLength; i++) {
             LASER_INPUT_HATCHES[i] = new MetaTileEntityLaserHatch(location("laser_input_hatch." + GTValues.VN[i].toLowerCase()), i, false);
             MetaTileEntities.registerMetaTileEntity(9002 + i, LASER_INPUT_HATCHES[i]);
         }

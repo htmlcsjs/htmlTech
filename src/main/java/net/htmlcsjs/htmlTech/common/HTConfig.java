@@ -11,7 +11,7 @@ public class HTConfig {
     public static LaserOptions lasers = new LaserOptions();
 
     public static class LaserOptions {
-        @Config.Comment({"Minimum tier of laser collectors.", "Default: 6 [IV]"})
-        public int minLaserTier = 6;
+        @Config.Comment({"Minimum tier of laser collectors.", "Default: 5 [IV]"})
+        public int minLaserTier = 5;
     }
 }

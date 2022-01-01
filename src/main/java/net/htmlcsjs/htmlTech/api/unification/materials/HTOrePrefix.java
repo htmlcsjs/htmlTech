@@ -1,4 +1,4 @@
-package net.htmlcsjs.htmlTech.api.materials;
+package net.htmlcsjs.htmlTech.api.unification.materials;
 
 import gregtech.api.GTValues;
 import gregtech.api.unification.material.info.MaterialIconType;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static gregtech.api.unification.ore.OrePrefix.Flags.ENABLE_UNIFICATION;
-import static net.htmlcsjs.htmlTech.api.materials.HTMaterials.LASER;
+import static net.htmlcsjs.htmlTech.api.unification.materials.HTMaterials.LASER;
 
 public class HTOrePrefix {
     public static MaterialIconType laserIcon;

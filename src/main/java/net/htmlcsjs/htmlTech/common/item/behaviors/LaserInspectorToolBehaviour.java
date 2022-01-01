@@ -25,7 +25,7 @@ import net.minecraftforge.items.ItemStackHandler;
 
 import java.awt.*;
 
-import static net.htmlcsjs.htmlTech.api.materials.HTMaterials.LASER;
+import static net.htmlcsjs.htmlTech.api.unification.materials.HTMaterials.LASER;
 
 public class LaserInspectorToolBehaviour implements IItemBehaviour, ItemUIFactory {
 

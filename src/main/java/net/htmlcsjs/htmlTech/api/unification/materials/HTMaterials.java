@@ -1,4 +1,4 @@
-package net.htmlcsjs.htmlTech.api.materials;
+package net.htmlcsjs.htmlTech.api.unification.materials;
 
 import gregtech.api.GTValues;
 import gregtech.api.unification.material.Material;
@@ -44,6 +44,8 @@ public class HTMaterials {
         Flerovium.setHidden(false);
         RhodiumPlatedPalladium.addFlags(GENERATE_FOIL);
         Trinium.addFlags(GENERATE_FRAME);
+        Titanium.addFlags(GENERATE_FOIL);
+        Darmstadtium.addFlags(GENERATE_FOIL);
     }
 
     public static void init() {

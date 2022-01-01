@@ -3,7 +3,7 @@ package net.htmlcsjs.htmlTech.loaders.recipe;
 import static gregtech.api.recipes.RecipeMaps.MIXER_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
-import static net.htmlcsjs.htmlTech.api.materials.HTMaterials.FlOPPa;
+import static net.htmlcsjs.htmlTech.api.unification.materials.HTMaterials.FlOPPa;
 
 public class MaterialLoader {
     public static void init() {
