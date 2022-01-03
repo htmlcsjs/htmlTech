@@ -69,7 +69,7 @@ public class LaserInspectorToolBehaviour implements IItemBehaviour, ItemUIFactor
             return I18n.format("metaitem.tool.laser.inspector.gui.not_laser");
         } else {
             Material material = GregTechAPI.MATERIAL_REGISTRY.getObjectById(laserItem.getDamage(laserInventory.getStackInSlot(0)));
-            int voltage = material.getProperty(LASER).voltage;
+            long voltage = material.getProperty(LASER).voltage;
             return I18n.format("htmltech.laser.voltage", voltage, GTValues.VN[(GTUtility.getTierByVoltage(voltage))]);
         }
     }
@@ -80,7 +80,7 @@ public class LaserInspectorToolBehaviour implements IItemBehaviour, ItemUIFactor
             return "";
         } else {
             Material material = GregTechAPI.MATERIAL_REGISTRY.getObjectById(laserItem.getDamage(laserInventory.getStackInSlot(0)));
-            int amperage = material.getProperty(LASER).amperage;
+            long amperage = material.getProperty(LASER).amperage;
             return I18n.format("htmltech.laser.amperage", amperage);
         }
     }

@@ -28,8 +28,8 @@ public class HTOrePrefix {
         laser = new OrePrefix("laser", -1, null, laserIcon, ENABLE_UNIFICATION, material -> material.hasProperty(LASER),  material -> {
             List<String> textList = new ArrayList<String>();
 
-            int voltage = material.getProperty(LASER).voltage;
-            int amperage = material.getProperty(LASER).amperage;
+            long voltage = material.getProperty(LASER).voltage;
+            long amperage = material.getProperty(LASER).amperage;
 
             textList.add(I18n.format("htmltech.laser.voltage", voltage, GTValues.VNF[(GTUtility.getTierByVoltage(voltage))]));
             textList.add(I18n.format("htmltech.laser.amperage", amperage));

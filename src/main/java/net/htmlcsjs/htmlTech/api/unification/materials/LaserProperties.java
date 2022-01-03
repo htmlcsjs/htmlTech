@@ -8,14 +8,18 @@ import java.util.Objects;
 
 public class LaserProperties implements IMaterialProperty<LaserProperties> {
 
-    public final int voltage;
-    public final int amperage;
+    public final long voltage;
+    public final long amperage;
     public final double efficiency;
 
-    public LaserProperties(int voltage, int amperage, double efficiency) {
+    public LaserProperties(long voltage, long amperage, double efficiency) {
         this.voltage = voltage;
         this.amperage = amperage;
         this.efficiency = efficiency;
+    }
+
+    public LaserProperties(long voltage, long amperage) {
+        this(voltage, amperage, 1.0);
     }
 
     /**
@@ -25,7 +29,7 @@ public class LaserProperties implements IMaterialProperty<LaserProperties> {
 
     @Override
     public void verifyProperty(MaterialProperties materialProperties) {
-        materialProperties.ensureSet(PropertyKey.GEM);
+        materialProperties.ensureSet(PropertyKey.FLUID);
     }
 
     @Override
