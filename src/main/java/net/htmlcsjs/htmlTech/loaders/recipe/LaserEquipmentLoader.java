@@ -20,6 +20,7 @@ import static gregtech.common.metatileentities.MetaTileEntities.HULL;
 import static net.htmlcsjs.htmlTech.api.HTValues.mteLength;
 import static net.htmlcsjs.htmlTech.common.blocks.HTMetaBlocks.HT_CASING;
 import static net.htmlcsjs.htmlTech.common.blocks.HTMetaBlocks.LASER_PIPES;
+import static net.htmlcsjs.htmlTech.common.item.HTMetaItems.EMPTY_LASER;
 import static net.htmlcsjs.htmlTech.common.metatileentity.HTMetaTileEntities.*;
 
 public class LaserEquipmentLoader {
@@ -112,6 +113,16 @@ public class LaserEquipmentLoader {
                 //.reserchItem(LASER_INPUT_HATCHES[LuV])
                 .EUt(VA[ZPM])
                 .duration(800)
+                .buildAndRegister();
+
+        // Empty Laser Recipe
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(GLASS_TUBE)
+                .input(lens, Glass)
+                .fluidInputs(Silver.getFluid(4*L))
+                .output(EMPTY_LASER)
+                .EUt(VA[EV])
+                .duration(20)
                 .buildAndRegister();
 
     }

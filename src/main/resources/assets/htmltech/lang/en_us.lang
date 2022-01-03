@@ -1,6 +1,7 @@
 metaitem.tool.laser.inspector.name=Laser Inspector
 metaitem.tool.laser.inspector.gui.title=§n§lLaser Inspector
 metaitem.tool.laser.inspector.gui.not_laser=§lThis isnt a laser, please put in a htmlTech Laser
+metaitem.empty_laser.name=Empty Laser
 
 
 htmltech.laser.voltage=Max Voltage: §a%,d (§r%s§a)

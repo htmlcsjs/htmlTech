@@ -23,6 +23,7 @@ import javax.annotation.Nullable;
 import java.util.Arrays;
 import java.util.List;
 
+import static net.htmlcsjs.htmlTech.common.item.HTMetaItems.EMPTY_LASER;
 import static net.htmlcsjs.htmlTech.common.item.HTMetaItems.LASER_INSPECTOR;
 
 public class HTMetaItem extends StandardMetaItem {
@@ -32,6 +33,7 @@ public class HTMetaItem extends StandardMetaItem {
     @Override
     public void registerSubItems() {
         LASER_INSPECTOR = addItem(1, "tool.laser.inspector").addComponents(new LaserInspectorToolBehaviour()).setMaxStackSize(1);
+        EMPTY_LASER = addItem(2, "empty_laser").setMaxStackSize(1);
     }
 
     @Override
