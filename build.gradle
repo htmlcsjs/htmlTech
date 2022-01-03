@@ -34,10 +34,10 @@ repositories {
         url "https://minecraft.curseforge.com/api/maven"
     }
     maven {
-        url = "http://chickenbones.net/maven/"
+        url "http://chickenbones.net/maven/"
     }
     maven {
-        url = "http://dvs1.progwml6.com/files/maven/"
+        url ="http://dvs1.progwml6.com/files/maven/"
     }
     maven { // TOP
         name 'tterrag maven'
@@ -54,7 +54,7 @@ repositories {
 
 dependencies {
     deobfCompile("mezz.jei:jei_1.12.2:+")
-    deobfCompile("curse.maven:gregtechceu-557242:3585578")
+    provided(files("libs/gregtech-1.12.2-2.0.2-beta.jar"))
     deobfCompile("codechicken-lib-1-8:CodeChickenLib-1.12.2:3.2.3.358:universal")
     deobfCompile("codechicken:ChickenASM:1.12-1.0.2.9")
     deobfCompile("mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.23-16")

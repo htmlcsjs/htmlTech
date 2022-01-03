@@ -46,6 +46,7 @@ public class HTMaterials {
         Trinium.addFlags(GENERATE_FRAME);
         Titanium.addFlags(GENERATE_FOIL);
         Darmstadtium.addFlags(GENERATE_FOIL);
+        UraniumRhodiumDinaquadide.addFlags(GENERATE_SPRING);
     }
 
     public static void init() {

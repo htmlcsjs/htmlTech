@@ -28,7 +28,7 @@ htmltech.machine.laser_input_hatch.umv.name=UMV Laser Collecting Hatch
 htmltech.machine.laser_input_hatch.uxv.name=UXV Laser Collecting Hatch
 htmltech.machine.laser_input_hatch.max.name=MAX Laser Collecting Hatch
 
-tile.htmltech_casing.naq_alloy_casing.name=Resistant Naquadah Alloy
+tile.htmltech_casing.naq_alloy_casing.name=Resistant Naquadah Alloy Casing
 
 item.material.oreprefix.laser=%s Laser
 material.floppa=FlOPPa
