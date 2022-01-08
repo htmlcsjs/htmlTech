@@ -11,6 +11,7 @@ import net.htmlcsjs.htmlTech.common.laserpipe.tile.TileEntityLaserPipeTickable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
@@ -59,6 +60,15 @@ public class BlockLaserPipe extends BlockSimplePipe<LaserPipeType, EmptyNodeData
         for(LaserPipeType type : LaserPipeType.values()) {
             items.add(new ItemStack(this, 1, type.ordinal()));
         }
+    }
+
+    @Override
+    public boolean isHoldingPipe(EntityPlayer player) {
+        if (player == null) {
+            return false;
+        }
+        ItemStack stack = player.getHeldItemMainhand();
+        return stack != ItemStack.EMPTY && stack.getItem() instanceof ItemBlockLaserPipe;
     }
 
     @Override

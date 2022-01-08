@@ -2,12 +2,14 @@ package net.htmlcsjs.htmlTech.api.unification.materials;
 
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.info.MaterialFlag;
+import gregtech.api.unification.material.properties.DustProperty;
 import gregtech.api.unification.material.properties.PropertyKey;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gregtech.api.unification.material.info.MaterialIconSet.SHINY;
+import static gregtech.api.unification.material.properties.PropertyKey.DUST;
 
 public class HTMaterials {
 
@@ -56,8 +58,8 @@ public class HTMaterials {
 
 
         // Adding Flags to Materials
-        Protactinium.setHidden(false);
-        Flerovium.setHidden(false);
+        Protactinium.setProperty(DUST, new DustProperty());
+        Flerovium.setProperty(DUST, new DustProperty());
         RhodiumPlatedPalladium.addFlags(GENERATE_FOIL);
         Trinium.addFlags(GENERATE_FRAME);
         Titanium.addFlags(GENERATE_FOIL);
