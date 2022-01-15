@@ -6,6 +6,7 @@ import gregtech.api.capability.IElectricItem;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.items.metaitem.StandardMetaItem;
 import gregtech.api.items.metaitem.stats.IItemBehaviour;
+import net.htmlcsjs.htmlTech.common.item.behaviors.LaserGunBehaviour;
 import net.htmlcsjs.htmlTech.common.item.behaviors.LaserInspectorToolBehaviour;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -23,8 +24,7 @@ import javax.annotation.Nullable;
 import java.util.Arrays;
 import java.util.List;
 
-import static net.htmlcsjs.htmlTech.common.item.HTMetaItems.EMPTY_LASER;
-import static net.htmlcsjs.htmlTech.common.item.HTMetaItems.LASER_INSPECTOR;
+import static net.htmlcsjs.htmlTech.common.item.HTMetaItems.*;
 
 public class HTMetaItem extends StandardMetaItem {
     public HTMetaItem(short offset) {
@@ -34,6 +34,7 @@ public class HTMetaItem extends StandardMetaItem {
     public void registerSubItems() {
         LASER_INSPECTOR = addItem(1, "tool.laser.inspector").addComponents(new LaserInspectorToolBehaviour()).setMaxStackSize(1);
         EMPTY_LASER = addItem(2, "empty_laser").setMaxStackSize(1);
+        LASER_GUN = addItem(3, "laser_gun").setMaxStackSize(1).addComponents(new LaserGunBehaviour());
     }
 
     @Override
