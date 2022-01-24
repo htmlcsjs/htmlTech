@@ -120,7 +120,7 @@ public class LaserPipeRenderer implements ICCBlockRenderer, IItemRenderer {
 
         LaserPipeType fluidPipeType = tileEntityPipe.getPipeType();
         int paintingColor = tileEntityPipe.getPaintingColor();
-        int connectedSidesMap = blockFluidPipe.getVisualConnections(tileEntityPipe);
+        int connectedSidesMap = tileEntityPipe.getVisualConnections();
 
         if (fluidPipeType != null) {
             HtmlTech.logger.debug("Rendering laser pipe block");
@@ -200,7 +200,7 @@ public class LaserPipeRenderer implements ICCBlockRenderer, IItemRenderer {
             LaserPipeType fluidPipeType = tileEntityPipe.getPipeType();
             if (fluidPipeType != null) {
                 float thickness = fluidPipeType.getThickness();
-                int connectedSidesMask = blockFluidPipe.getVisualConnections(tileEntityPipe);
+                int connectedSidesMask = tileEntityPipe.getVisualConnections();
                 Cuboid6 baseBox = BlockLaserPipe.getSideBox((EnumFacing) null, thickness);
                 BlockRenderer.renderCuboid(renderState, baseBox, 0);
                 EnumFacing[] var13 = EnumFacing.VALUES;

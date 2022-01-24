@@ -47,7 +47,7 @@ public class TileEntityLaserPipe extends TileEntityPipeBase<LaserPipeType, Empty
 
     @Override
     public <T> T getCapabilityInternal(Capability<T> capability, @Nullable EnumFacing facing) {
-        if(capability == HtmlTechCapabilities.LASER_CONTAINER && isConnectionOpenAny(facing)) {
+        if(capability == HtmlTechCapabilities.LASER_CONTAINER && !isConnected(facing)) {
             return HtmlTechCapabilities.LASER_CONTAINER.cast(getLaserContainer());
         }
         return super.getCapabilityInternal(capability, facing);
