@@ -35,7 +35,7 @@ public class ClientProxy extends CommonProxy {
     public void preLoad() {
         super.preLoad();
         HTTextures.preInit();
-        LaserPipeRenderer.preInit();
+        LaserPipeRenderer.INSTANCE.preInit();
     }
 
     @SubscribeEvent
@@ -45,10 +45,10 @@ public class ClientProxy extends CommonProxy {
                 @Nonnull
                 @Override
                 protected ModelResourceLocation getModelResourceLocation(@Nonnull IBlockState state) {
-                    return LaserPipeRenderer.MODEL_LOCATION;
+                    return LaserPipeRenderer.INSTANCE.getModelLocation();
                 }
             });
-            ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(pipe), stack -> LaserPipeRenderer.MODEL_LOCATION);
+            ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(pipe), stack -> LaserPipeRenderer.INSTANCE.getModelLocation());
         }
 
         HTMetaBlocks.registerItemModels();

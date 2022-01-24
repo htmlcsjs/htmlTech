@@ -88,7 +88,7 @@ public class BlockLaserPipe extends BlockSimplePipe<LaserPipeType, EmptyNodeData
 
     @Override
     public EnumBlockRenderType getRenderType(IBlockState state) {
-        return LaserPipeRenderer.BLOCK_RENDER_TYPE;
+        return LaserPipeRenderer.INSTANCE.getBlockRenderType();
     }
 
     @Override
