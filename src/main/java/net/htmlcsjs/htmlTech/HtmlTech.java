@@ -5,6 +5,7 @@ import gregtech.api.capability.SimpleCapabilityManager;
 import net.htmlcsjs.htmlTech.api.HTValues;
 import net.htmlcsjs.htmlTech.api.capability.ILaserContainer;
 import net.htmlcsjs.htmlTech.common.blocks.HTMetaBlocks;
+import net.htmlcsjs.htmlTech.common.command.HtmlTechCommand;
 import net.htmlcsjs.htmlTech.common.metatileentity.HTMetaTileEntities;
 import net.htmlcsjs.htmlTech.integration.theoneprobe.HTTOPCompatibility;
 import net.htmlcsjs.htmlTech.proxy.CommonProxy;
@@ -13,6 +14,7 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import org.apache.logging.log4j.Logger;
 
 @Mod(modid = HtmlTech.MODID, name = HtmlTech.NAME, version = HtmlTech.VERSION,
@@ -44,5 +46,10 @@ public class HtmlTech {
             logger.info("TheOneProbe found. Enabling integration...");
             HTTOPCompatibility.registerCompatibility();
         }
+    }
+
+    @EventHandler
+    public void onServerLoad(FMLServerStartingEvent event) {
+        event.registerServerCommand(new HtmlTechCommand());
     }
 }
