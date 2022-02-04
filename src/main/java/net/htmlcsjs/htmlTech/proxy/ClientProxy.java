@@ -4,7 +4,7 @@ import com.mojang.authlib.minecraft.MinecraftProfileTexture;
 import net.htmlcsjs.htmlTech.client.HTTextures;
 import net.htmlcsjs.htmlTech.common.blocks.HTMetaBlocks;
 import net.htmlcsjs.htmlTech.common.laserpipe.BlockLaserPipe;
-import net.htmlcsjs.htmlTech.common.laserpipe.LaserPipeRenderer;
+import net.htmlcsjs.htmlTech.client.LaserPipeRenderer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.network.NetworkPlayerInfo;

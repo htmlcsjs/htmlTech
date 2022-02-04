@@ -5,6 +5,7 @@ import gregtech.api.pipenet.block.simple.EmptyNodeData;
 import gregtech.api.pipenet.tile.IPipeTile;
 import gregtech.api.pipenet.tile.TileEntityPipeBase;
 import net.htmlcsjs.htmlTech.api.capability.HtmlTechCapabilities;
+import net.htmlcsjs.htmlTech.client.LaserPipeRenderer;
 import net.htmlcsjs.htmlTech.common.laserpipe.net.WorldLaserNet;
 import net.htmlcsjs.htmlTech.common.laserpipe.tile.TileEntityLaserPipe;
 import net.htmlcsjs.htmlTech.common.laserpipe.tile.TileEntityLaserPipeTickable;
