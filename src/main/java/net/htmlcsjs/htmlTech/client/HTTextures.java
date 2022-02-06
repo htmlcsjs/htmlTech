@@ -4,6 +4,7 @@ import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
 import gregtech.client.renderer.texture.cube.SimpleOverlayRenderer;
 import net.htmlcsjs.htmlTech.HtmlTech;
 import net.htmlcsjs.htmlTech.api.HTValues;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.relauncher.Side;
@@ -19,6 +20,8 @@ public class HTTextures {
     public static SimpleOverlayRenderer LASER_INPUT;
     public static SimpleOverlayRenderer LASER_OUTPUT;
     public static SimpleOverlayRenderer NAQ_ALLOY_CASING;
+
+    public static final ModelResourceLocation LASER_PIPE_MODEL = new ModelResourceLocation(new ResourceLocation(HtmlTech.MODID, "laser_pipe_normal"), "normal");
 
     public static void preInit() {
         LASER_INPUT = new SimpleOverlayRenderer("overlay/machine/overlay_laser_in");
