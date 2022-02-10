@@ -40,6 +40,8 @@ public class CommandDumpMaterials extends CommandTreeBase {
             materialData.put("id", material.getId());
             materialData.put("colour", material.getMaterialRGB());
             materialData.put("blast_temp", material.getBlastTemperature());
+            materialData.put("formula", material.getChemicalFormula());
+            materialData.put("mass", material.getMass());
 
             // material properties stuff
             Map<String, Object> propertiesMap = new HashMap<>();
@@ -66,11 +68,11 @@ public class CommandDumpMaterials extends CommandTreeBase {
             } catch (Exception ignored) {}
             if (properties.hasProperty(PropertyKey.FLUID_PIPE)) {
                 FluidPipeProperties fluidPipeProperties = properties.getProperty(PropertyKey.FLUID_PIPE);
-                propertiesMap.put("blast", String.format("Throughput: %d, Max Temp: %dK, Channels: %d", fluidPipeProperties.getThroughput(), fluidPipeProperties.getMaxFluidTemperature(), fluidPipeProperties.getTanks()));
+                propertiesMap.put("fluid_pipe", String.format("Throughput: %d, Max Temp: %dK, Channels: %d", fluidPipeProperties.getThroughput(), fluidPipeProperties.getMaxFluidTemperature(), fluidPipeProperties.getTanks()));
             }
             if (properties.hasProperty(PropertyKey.ITEM_PIPE)) {
                 ItemPipeProperties itemPipeProperties = properties.getProperty(PropertyKey.ITEM_PIPE);
-                propertiesMap.put("blast", String.format("Throughput: %f, Priority: %d", itemPipeProperties.getTransferRate() * 64, itemPipeProperties.getPriority()));
+                propertiesMap.put("item_pipe", String.format("Throughput: %f, Priority: %d", itemPipeProperties.getTransferRate() * 64, itemPipeProperties.getPriority()));
             }
             if (properties.hasProperty(PropertyKey.FLUID)) {
                 FluidProperty fluidProperty = properties.getProperty(PropertyKey.FLUID);
