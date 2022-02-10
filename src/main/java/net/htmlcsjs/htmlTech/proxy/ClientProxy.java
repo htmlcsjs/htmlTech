@@ -4,7 +4,7 @@ import com.mojang.authlib.minecraft.MinecraftProfileTexture;
 import net.htmlcsjs.htmlTech.client.HTTextures;
 import net.htmlcsjs.htmlTech.common.blocks.HTMetaBlocks;
 import net.htmlcsjs.htmlTech.common.laserpipe.BlockLaserPipe;
-import net.htmlcsjs.htmlTech.common.laserpipe.LaserPipeRenderer;
+import net.htmlcsjs.htmlTech.client.LaserPipeRenderer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.network.NetworkPlayerInfo;
@@ -35,7 +35,7 @@ public class ClientProxy extends CommonProxy {
     public void preLoad() {
         super.preLoad();
         HTTextures.preInit();
-        LaserPipeRenderer.preInit();
+        LaserPipeRenderer.INSTANCE.preInit();
     }
 
     @SubscribeEvent
@@ -45,10 +45,10 @@ public class ClientProxy extends CommonProxy {
                 @Nonnull
                 @Override
                 protected ModelResourceLocation getModelResourceLocation(@Nonnull IBlockState state) {
-                    return LaserPipeRenderer.MODEL_LOCATION;
+                    return LaserPipeRenderer.INSTANCE.getModelLocation();
                 }
             });
-            ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(pipe), stack -> LaserPipeRenderer.MODEL_LOCATION);
+            ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(pipe), stack -> LaserPipeRenderer.INSTANCE.getModelLocation());
         }
 
         HTMetaBlocks.registerItemModels();
