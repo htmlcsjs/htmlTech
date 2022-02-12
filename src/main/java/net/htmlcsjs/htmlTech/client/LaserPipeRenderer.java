@@ -12,14 +12,11 @@ import net.htmlcsjs.htmlTech.common.laserpipe.LaserPipeType;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 
-@SideOnly(Side.CLIENT)
 public class LaserPipeRenderer extends PipeRenderer {
 
     public static final LaserPipeRenderer INSTANCE = new LaserPipeRenderer();

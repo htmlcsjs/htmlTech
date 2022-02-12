@@ -20,6 +20,8 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.commons.lang3.tuple.Pair;
 
 import javax.annotation.Nonnull;
@@ -88,6 +90,8 @@ public class BlockLaserPipe extends BlockSimplePipe<LaserPipeType, EmptyNodeData
     }
 
     @Override
+    @Nonnull
+    @SideOnly(Side.CLIENT)
     public EnumBlockRenderType getRenderType(IBlockState state) {
         return LaserPipeRenderer.INSTANCE.getBlockRenderType();
     }
