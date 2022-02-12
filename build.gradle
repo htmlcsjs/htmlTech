@@ -14,7 +14,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 
 
-version = "0.1.1-beta"
+version = "0.1.2-beta"
 group = "net.htmlcsjs.htmlTech"
 archivesBaseName = "htmlTech"
 
