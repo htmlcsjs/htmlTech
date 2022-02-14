@@ -42,6 +42,7 @@ public class CommandDumpMaterials extends CommandTreeBase {
             materialData.put("blast_temp", material.getBlastTemperature());
             materialData.put("formula", material.getChemicalFormula());
             materialData.put("mass", material.getMass());
+            materialData.put("icon_set", material.getMaterialIconSet().getName());
 
             // material properties stuff
             Map<String, Object> propertiesMap = new HashMap<>();
