@@ -1,5 +1,6 @@
 package net.htmlcsjs.htmlTech.api.unification.materials;
 
+import gregtech.api.fluids.fluidType.FluidTypes;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.info.MaterialFlag;
 import gregtech.api.unification.material.properties.DustProperty;
@@ -39,7 +40,7 @@ public class HTMaterials {
                 .build();
 
         NaquadriaTetratrinite = new Material.Builder(21001, "naquadria_tetratrinite")
-                .fluid(Material.FluidType.GAS).fluidTemp(32012)
+                .fluid(FluidTypes.GAS).fluidTemp(32012)
                 .components(Naquadria, 1, Trinium, 4)
                 .flags(DECOMPOSITION_BY_CENTRIFUGING)
                 .color(0x560909)

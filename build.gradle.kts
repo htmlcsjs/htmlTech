@@ -66,7 +66,7 @@ repositories {
 
 dependencies {
     "deobfCompile"("mezz.jei:jei_1.12.2:+")
-    "provided"(files("libs/gregtech-1.12.2-2.1.0-beta.jar"))
+    "provided"(files("libs/gregtech-1.12.2-2.1.4-beta.jar"))
     "deobfCompile"("codechicken-lib-1-8:CodeChickenLib-1.12.2:3.2.3.358:universal")
     "deobfCompile"("codechicken:ChickenASM:1.12-1.0.2.9")
     "deobfCompile"("mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.23-16")
