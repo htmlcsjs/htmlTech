@@ -6,6 +6,7 @@ import net.htmlcsjs.htmlTech.api.HTValues;
 import net.htmlcsjs.htmlTech.api.capability.ILaserContainer;
 import net.htmlcsjs.htmlTech.common.blocks.HTMetaBlocks;
 import net.htmlcsjs.htmlTech.common.command.HtmlTechCommand;
+import net.htmlcsjs.htmlTech.common.item.HTMetaItems;
 import net.htmlcsjs.htmlTech.common.metatileentity.HTMetaTileEntities;
 import net.htmlcsjs.htmlTech.integration.theoneprobe.HTTOPCompatibility;
 import net.htmlcsjs.htmlTech.proxy.CommonProxy;
@@ -33,6 +34,7 @@ public class HtmlTech {
     public void preInit(FMLPreInitializationEvent event) {
         logger = event.getModLog();
         SimpleCapabilityManager.registerCapabilityWithNoDefault(ILaserContainer.class);
+        HTMetaItems.init();
         HTMetaBlocks.init();
         HTMetaTileEntities.init();
         proxy.preLoad();
@@ -41,6 +43,8 @@ public class HtmlTech {
     @EventHandler
     public void init(FMLInitializationEvent event) {
         proxy.init();
+
+        GTValues.HT = true;
 
         if (GTValues.isModLoaded(HTValues.MODID_TOP)) {
             logger.info("TheOneProbe found. Enabling integration...");

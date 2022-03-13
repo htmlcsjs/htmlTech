@@ -18,6 +18,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static gregtech.api.GTValues.VN;
+
 public class CommandDumpMaterials extends CommandTreeBase {
     @Override
     public String getName() {
@@ -50,7 +52,7 @@ public class CommandDumpMaterials extends CommandTreeBase {
 
             if (properties.hasProperty(PropertyKey.WIRE)) {
                 WireProperties wireProperties = material.getProperty(PropertyKey.WIRE);
-                propertiesMap.put("wire", String.format("Voltage: %s, Amperage: %d, Loss: %d", GTUtility.getTierByVoltage(wireProperties.getVoltage()), wireProperties.getAmperage(), wireProperties.getLossPerBlock()));
+                propertiesMap.put("wire", String.format("Voltage: %s, Amperage: %d, Loss: %d", VN[GTUtility.getTierByVoltage(wireProperties.getVoltage())], wireProperties.getAmperage(), wireProperties.getLossPerBlock()));
             }
             if (properties.hasProperty(PropertyKey.TOOL)) {
                 ToolProperty toolProperty = material.getProperty(PropertyKey.TOOL);

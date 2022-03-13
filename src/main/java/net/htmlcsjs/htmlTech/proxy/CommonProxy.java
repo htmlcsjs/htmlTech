@@ -6,7 +6,6 @@ import net.htmlcsjs.htmlTech.HtmlTech;
 import net.htmlcsjs.htmlTech.api.HTValues;
 import net.htmlcsjs.htmlTech.api.unification.materials.HTMaterials;
 import net.htmlcsjs.htmlTech.api.unification.materials.HTOrePrefix;
-import net.htmlcsjs.htmlTech.common.item.HTMetaItems;
 import net.htmlcsjs.htmlTech.common.laserpipe.BlockLaserPipe;
 import net.htmlcsjs.htmlTech.common.laserpipe.ItemBlockLaserPipe;
 import net.htmlcsjs.htmlTech.loaders.HTRecipeManiger;
@@ -28,7 +27,6 @@ import static net.htmlcsjs.htmlTech.common.blocks.HTMetaBlocks.LASER_PIPES;
 public class CommonProxy {
 
     public void preLoad() {
-        HTMetaItems.init();
     }
 
     public void init() {

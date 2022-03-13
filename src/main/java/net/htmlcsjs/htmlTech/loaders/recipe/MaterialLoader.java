@@ -9,7 +9,7 @@ import static net.htmlcsjs.htmlTech.api.unification.materials.HTMaterials.Naquad
 
 public class MaterialLoader {
     public static void init() {
-        MIXER_RECIPES.recipeBuilder().EUt(VA[ZPM]).duration(200)
+        MIXER_RECIPES.recipeBuilder().EUt(HT ? VA[MAX] : VA[UV]).duration(200)
                 .input(dust, Flerovium, 1)
                 .fluidInputs(Oxygen.getFluid(1000))
                 .input(dust, Phosphorus, 1)
