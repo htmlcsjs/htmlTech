@@ -6,6 +6,8 @@ import gregtech.api.GTValues;
 import gregtech.api.items.metaitem.stats.IItemBehaviour;
 import gregtech.client.particle.GTLaserBeamParticle;
 import gregtech.client.particle.GTParticleManager;
+import net.htmlcsjs.htmlTech.api.damagesources.HTDamageSources;
+import net.htmlcsjs.htmlTech.common.HTConfig;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -19,6 +21,7 @@ import java.util.List;
 public class LaserGunBehaviour implements IItemBehaviour {
 
     private GTLaserBeamParticle particle;
+    private float alpha; // TODO move to getter after ceu pr #800
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
@@ -27,11 +30,17 @@ public class LaserGunBehaviour implements IItemBehaviour {
         if (particle != null) {
             GTParticleManager.INSTANCE.clearAllEffects(true);
         }
+        alpha = 1.0F;
         particle = new GTLaserBeamParticle(world, Vector3.fromEntity(player).add(0, player.getEyeHeight(), 0), Vector3.fromEntity(player).subtract(new Vector3(rayTracedLooking.hitVec)))
                 .setBody(new ResourceLocation(GTValues.MODID, "textures/fx/laser/laser.png")); // create a beam particle and set its texture.
         GTParticleManager.INSTANCE.addEffect(particle); // add it to the particle manager.
         ItemStack itemStack = player.getHeldItem(hand);
-        return ActionResult.newResult(EnumActionResult.PASS, itemStack);
+
+        if (rayTracedLooking.typeOfHit == RayTraceResult.Type.ENTITY && rayTracedLooking.entityHit != null) {
+            rayTracedLooking.entityHit.attackEntityFrom(HTDamageSources.getLaserDamage(), HTConfig.lasers.laserGunDamage);
+        }
+
+        return ActionResult.newResult(EnumActionResult.SUCCESS, itemStack);
     }
 
     /**
@@ -116,4 +125,13 @@ public class LaserGunBehaviour implements IItemBehaviour {
         }
     }
 
+    @Override
+    public void onUpdate(ItemStack itemStack, Entity entity) {
+        if (alpha > 0) {
+            alpha -= 0.05F;
+            if (particle != null) {
+                particle.setAlpha(alpha);
+            }
+        }
+    }
 }
