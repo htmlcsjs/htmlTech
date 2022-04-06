@@ -10,6 +10,7 @@ import net.htmlcsjs.htmlTech.common.item.HTMetaItems;
 import net.htmlcsjs.htmlTech.common.metatileentity.HTMetaTileEntities;
 import net.htmlcsjs.htmlTech.integration.theoneprobe.HTTOPCompatibility;
 import net.htmlcsjs.htmlTech.proxy.CommonProxy;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -46,7 +47,7 @@ public class HtmlTech {
 
         GTValues.HT = true;
 
-        if (GTValues.isModLoaded(HTValues.MODID_TOP)) {
+        if (Loader.isModLoaded(HTValues.MODID_TOP)) {
             logger.info("TheOneProbe found. Enabling integration...");
             HTTOPCompatibility.registerCompatibility();
         }
