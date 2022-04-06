@@ -27,7 +27,7 @@ apply {
 val mcVersion = "1.12.2"
 val forgeVersion = "14.23.5.2847"
 val mcFullVersion = "$mcVersion-$forgeVersion"
-val modVersion = "0.1.3-beta"
+val modVersion = "0.2.0-beta"
 version = "$mcVersion-$modVersion"
 group = "net.htmlcsjs.htmlTech"
 
