@@ -18,9 +18,11 @@ import static gregtech.common.blocks.MetaBlocks.METAL_CASING;
 import static gregtech.common.items.MetaItems.*;
 import static gregtech.common.metatileentities.MetaTileEntities.HULL;
 import static net.htmlcsjs.htmlTech.api.HTValues.mteLength;
+import static net.htmlcsjs.htmlTech.api.unification.materials.HTOrePrefix.laser;
 import static net.htmlcsjs.htmlTech.common.blocks.HTMetaBlocks.HT_CASING;
 import static net.htmlcsjs.htmlTech.common.blocks.HTMetaBlocks.LASER_PIPES;
 import static net.htmlcsjs.htmlTech.common.item.HTMetaItems.EMPTY_LASER;
+import static net.htmlcsjs.htmlTech.common.item.HTMetaItems.LASER_GUN;
 import static net.htmlcsjs.htmlTech.common.metatileentity.HTMetaTileEntities.*;
 
 public class LaserEquipmentLoader {
@@ -123,6 +125,18 @@ public class LaserEquipmentLoader {
                 .output(EMPTY_LASER)
                 .EUt(VA[EV])
                 .duration(20)
+                .buildAndRegister();
+
+        // Laser Gun Recipe
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(screw, Steel, 4)
+                .input(stick, Iron)
+                .input(bolt, VanadiumSteel)
+                .input(plate, Polyethylene, 4)
+                .input(laser, CarbonDioxide)
+                .output(LASER_GUN)
+                .EUt(VA[HV])
+                .duration(200)
                 .buildAndRegister();
 
     }
