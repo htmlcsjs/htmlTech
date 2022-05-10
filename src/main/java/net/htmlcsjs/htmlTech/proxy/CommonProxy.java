@@ -1,7 +1,7 @@
 package net.htmlcsjs.htmlTech.proxy;
 
 import gregtech.api.GregTechAPI;
-import gregtech.common.blocks.VariantItemBlock;
+import gregtech.api.block.VariantItemBlock;
 import net.htmlcsjs.htmlTech.HtmlTech;
 import net.htmlcsjs.htmlTech.api.HTValues;
 import net.htmlcsjs.htmlTech.api.unification.materials.HTMaterials;
@@ -30,7 +30,6 @@ public class CommonProxy {
     }
 
     public void init() {
-
     }
 
     @SubscribeEvent

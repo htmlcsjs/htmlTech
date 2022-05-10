@@ -27,7 +27,7 @@ apply {
 val mcVersion = "1.12.2"
 val forgeVersion = "14.23.5.2847"
 val mcFullVersion = "$mcVersion-$forgeVersion"
-val modVersion = "0.2.0-beta"
+val modVersion = "0.2.1-beta"
 version = "$mcVersion-$modVersion"
 group = "net.htmlcsjs.htmlTech"
 
@@ -59,6 +59,9 @@ repositories {
         setUrl("https://maven.tterrag.com/")
     }
     maven {
+        setUrl("https://cursemaven.com")
+    }
+    maven {
         name = "CraftTweaker Maven"
         setUrl("https://maven.blamejared.com/")
     }
@@ -66,7 +69,7 @@ repositories {
 
 dependencies {
     "deobfCompile"("mezz.jei:jei_1.12.2:+")
-    "provided"(files("libs/gregtech-1.12.2-2.2.0-beta.jar"))
+    "deobfCompile"("curse.maven:ceu-557242:3784798")
     "deobfCompile"("codechicken-lib-1-8:CodeChickenLib-1.12.2:3.2.3.358:universal")
     "deobfCompile"("codechicken:ChickenASM:1.12-1.0.2.9")
     "deobfCompile"("mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.23-16")

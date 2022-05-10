@@ -32,7 +32,7 @@ public class LaserNetWalker extends PipeNetWalker {
     }
 
     @Override
-    protected PipeNetWalker createSubWalker(World world, BlockPos blockPos, int walkedBlocks) {
+    protected PipeNetWalker createSubWalker(World world, EnumFacing enumFacing, BlockPos blockPos, int walkedBlocks) {
         LaserNetWalker walker = new LaserNetWalker(world, blockPos, walkedBlocks, routes);
         walker.pipes = new HashSet<>(pipes);
         return walker;
