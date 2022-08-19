@@ -69,7 +69,7 @@ repositories {
 
 dependencies {
     "deobfCompile"("mezz.jei:jei_1.12.2:+")
-    "deobfCompile"("curse.maven:ceu-557242:3784798")
+    "deobfCompile"("curse.maven:ceu-557242:3941501")
     "deobfCompile"("codechicken-lib-1-8:CodeChickenLib-1.12.2:3.2.3.358:universal")
     "deobfCompile"("codechicken:ChickenASM:1.12-1.0.2.9")
     "deobfCompile"("mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.23-16")
