@@ -26,8 +26,8 @@ htmltech.machine.laser_input_hatch.uv.name=UV Laser Collecting Hatch
 htmltech.machine.laser_input_hatch.uhv.name=UHV Laser Collecting Hatch
 htmltech.machine.laser_input_hatch.uev.name=UEV Laser Collecting Hatch
 htmltech.machine.laser_input_hatch.uiv.name=UIV Laser Collecting Hatch
-htmltech.machine.laser_input_hatch.umv.name=UMV Laser Collecting Hatch
 htmltech.machine.laser_input_hatch.uxv.name=UXV Laser Collecting Hatch
+htmltech.machine.laser_input_hatch.opv.name=OpV Laser Collecting Hatch
 htmltech.machine.laser_input_hatch.max.name=MAX Laser Collecting Hatch
 
 tile.htmltech_casing.naq_alloy_casing.name=Resistant Naquadah Alloy Casing
