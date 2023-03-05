@@ -14,21 +14,21 @@ htmltech.machine.laser_collector.name=Лазерный коллектор
 htmltech.multiblock.laser_projector.description=Проецирует лазеры, используя энергию
 htmltech.laser.pipe.name=Запечатанная лазерная трубка
 
-htmltech.machine.laser_input_hatch.ulv.name=ULV Лазерный люк
-htmltech.machine.laser_input_hatch.lv.name=LV Лазерный люк
-htmltech.machine.laser_input_hatch.mv.name=MV Лазерный люк
-htmltech.machine.laser_input_hatch.hv.name=HV Лазерный люк
-htmltech.machine.laser_input_hatch.ev.name=EV Лазерный люк
-htmltech.machine.laser_input_hatch.iv.name=IV Лазерный люк
-htmltech.machine.laser_input_hatch.luv.name=LuV Лазерный люк
-htmltech.machine.laser_input_hatch.zpm.name=ZPM Лазерный люк
-htmltech.machine.laser_input_hatch.uv.name=UV Лазерный люк
-htmltech.machine.laser_input_hatch.uhv.name=UHV Лазерный люк
-htmltech.machine.laser_input_hatch.uev.name=UEV Лазерный люк
-htmltech.machine.laser_input_hatch.uiv.name=UIV Лазерный люк
-htmltech.machine.laser_input_hatch.umv.name=UMV Лазерный люк
-htmltech.machine.laser_input_hatch.uxv.name=UXV Лазерный люк
-htmltech.machine.laser_input_hatch.max.name=MAX Лазерный люк
+htmltech.machine.laser_input_hatch.ulv.name=§8ULV§r Лазерный люк
+htmltech.machine.laser_input_hatch.lv.name=§7LV§r Лазерный люк
+htmltech.machine.laser_input_hatch.mv.name=§bMV§r Лазерный люк
+htmltech.machine.laser_input_hatch.hv.name=§6HV§r Лазерный люк
+htmltech.machine.laser_input_hatch.ev.name=§5EV§r Лазерный люк
+htmltech.machine.laser_input_hatch.iv.name=§1IV§r Лазерный люк
+htmltech.machine.laser_input_hatch.luv.name=§dLuV§r Лазерный люк
+htmltech.machine.laser_input_hatch.zpm.name=§fZPM§r Лазерный люк
+htmltech.machine.laser_input_hatch.uv.name=§3UV§r Лазерный люк
+htmltech.machine.laser_input_hatch.uhv.name=§4UHV§r Лазерный люк
+htmltech.machine.laser_input_hatch.uev.name=§aUEV§r Лазерный люк
+htmltech.machine.laser_input_hatch.uiv.name=§2UIV§r Лазерный люк
+htmltech.machine.laser_input_hatch.umv.name=§eUXV§r Лазерный люк
+htmltech.machine.laser_input_hatch.uxv.name=§9OpV§r Лазерный люк
+htmltech.machine.laser_input_hatch.max.name=§cMAX§r Лазерный люк
 
 tile.htmltech_casing.naq_alloy_casing.name=Стойкий корпус из сплава наквада
 
