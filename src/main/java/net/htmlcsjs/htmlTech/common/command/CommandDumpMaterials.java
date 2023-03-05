@@ -32,6 +32,7 @@ public class CommandDumpMaterials extends CommandTreeBase {
         return "htmltech.command.usage";
     }
 
+    // TODO, rewrite this shit
     @Override
     public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
         Map<String, Object> materialsData = new HashMap<>();
@@ -53,17 +54,22 @@ public class CommandDumpMaterials extends CommandTreeBase {
 
             if (properties.hasProperty(PropertyKey.WIRE)) {
                 WireProperties wireProperties = material.getProperty(PropertyKey.WIRE);
-                propertiesMap.put("wire", String.format("Voltage: %s, Amperage: %d, Loss: %d",
+                propertiesMap.put("wire", String.format("Voltage: %s, Amperage: %,d, Loss: %,d",
                         VN[GTUtility.getTierByVoltage(wireProperties.getVoltage())],
                         wireProperties.getAmperage(),
                         wireProperties.getLossPerBlock()));
             }
             if (properties.hasProperty(PropertyKey.TOOL)) {
                 ToolProperty toolProperty = material.getProperty(PropertyKey.TOOL);
-                propertiesMap.put("tool", String.format("Speed: %f, Durability: %d, Dmg: %f",
+                propertiesMap.put("tool", String.format("Speed: %,.2f, Durability: %,d, Damage: %,.2f, Harvest Level: %,d",
                         toolProperty.getToolSpeed(),
                         toolProperty.getToolDurability(),
-                        toolProperty.getToolAttackDamage()));
+                        toolProperty.getToolAttackDamage(),
+                        toolProperty.getToolHarvestLevel()));
+            }
+            if (properties.hasProperty(PropertyKey.ROTOR)) {
+                RotorProperty rotorProperty = material.getProperty(PropertyKey.ROTOR);
+                propertiesMap.put("rotor", String.format("Damage: %,.2f, Durability: %,d, Speed: %,.2f,", rotorProperty.getDamage(), rotorProperty.getDurability(), rotorProperty.getSpeed()));
             }
             if (properties.hasProperty(PropertyKey.ORE)) {
                 propertiesMap.put("ore", true);
@@ -75,7 +81,7 @@ public class CommandDumpMaterials extends CommandTreeBase {
                     BlastProperty blastProperty = material.getProperty(PropertyKey.BLAST);
                     Method reflectedGetTempTeir = TemperatureProperty.class.getDeclaredMethod("getMinTierForTemperature", Integer.class);
                     reflectedGetTempTeir.setAccessible(true);
-                    propertiesMap.put("blast", String.format("Temp: %dK (%s), Gas Tier: %s",
+                    propertiesMap.put("blast", String.format("Temp: %,dK (%s), Gas Tier: %s",
                             blastProperty.getBlastTemperature(),
                             reflectedGetTempTeir.invoke(TemperatureProperty.getInstance(), blastProperty.getBlastTemperature()),
                             blastProperty.getGasTier().toString()));
@@ -85,7 +91,7 @@ public class CommandDumpMaterials extends CommandTreeBase {
             }
             if (properties.hasProperty(PropertyKey.FLUID_PIPE)) {
                 FluidPipeProperties fluidPipeProperties = properties.getProperty(PropertyKey.FLUID_PIPE);
-                propertiesMap.put("fluid_pipe", String.format("Throughput: %d, Max Temp: %dK, Acid proof: %b, Cryo proof: %b, Gas proof: %b, Plasma proof: %b",
+                propertiesMap.put("fluid_pipe", String.format("Throughput: %,d, Max Temp: %,dK, Acid proof: %b, Cryo proof: %b, Gas proof: %b, Plasma proof: %b",
                         fluidPipeProperties.getThroughput(),
                         fluidPipeProperties.getMaxFluidTemperature(),
                         fluidPipeProperties.isAcidProof(),
@@ -95,20 +101,20 @@ public class CommandDumpMaterials extends CommandTreeBase {
             }
             if (properties.hasProperty(PropertyKey.ITEM_PIPE)) {
                 ItemPipeProperties itemPipeProperties = properties.getProperty(PropertyKey.ITEM_PIPE);
-                propertiesMap.put("item_pipe", String.format("Throughput: %f, Priority: %d", itemPipeProperties.getTransferRate() * 64, itemPipeProperties.getPriority()));
+                propertiesMap.put("item_pipe", String.format("Throughput: %f, Priority: %,d", itemPipeProperties.getTransferRate() * 64, itemPipeProperties.getPriority()));
             }
             if (properties.hasProperty(PropertyKey.FLUID)) {
                 FluidProperty fluidProperty = properties.getProperty(PropertyKey.FLUID);
                 fluidProperty.isGas();
                 fluidProperty.getFluidType().getName();
-                propertiesMap.put("fluid", String.format("Temp: %dK, Gas: %b, Type: %s",
+                propertiesMap.put("fluid", String.format("Temp: %,dK, Gas: %b, Type: %s",
                         fluidProperty.getFluidTemperature(),
                         fluidProperty.isGas(),
                         fluidProperty.getFluidType().getName()));
             }
             if (properties.hasProperty(PropertyKey.PLASMA)) {
                 PlasmaProperty plasmaProperty = properties.getProperty(PropertyKey.PLASMA);
-                propertiesMap.put("plasma_temp", String.format("Plasma Temp: %dK", plasmaProperty.getPlasma().getTemperature()));
+                propertiesMap.put("plasma_temp", String.format("Plasma Temp: %,dK", plasmaProperty.getPlasma().getTemperature()));
             }
 
             materialData.put("properties", propertiesMap);

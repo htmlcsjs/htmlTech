@@ -5,6 +5,7 @@ import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.info.MaterialFlag;
 import gregtech.api.unification.material.properties.DustProperty;
 import gregtech.api.unification.material.properties.PropertyKey;
+import gregtech.api.unification.material.properties.ToolProperty;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -30,13 +31,16 @@ public class HTMaterials {
 
     public static void register() {
         // New Materials
+
+        // Maybe balance?
         FlOPPa = new Material.Builder(21000, "floppa")
                 .ingot(32).blastTemp(6900)
                 .color(0xac8353).iconSet(SHINY)
                 .components(Flerovium, 1, Oxygen, 1, Phosphorus, 1, Protactinium, 1)
                 .flags(EXT2_METAL, DECOMPOSITION_BY_ELECTROLYZING)
                 //.properties.setProperty(LASER, new LaserProperties((int) GTValues.V[5], 128, 2))
-                .toolStats(128, 50, 2621440, 128)
+                .toolStats(new ToolProperty(128F, 50.0F, 4390983, 128))
+                .rotorStats(128F, 10F, 11888800)
                 .build();
 
         NaquadriaTetratrinite = new Material.Builder(21001, "naquadria_tetratrinite")

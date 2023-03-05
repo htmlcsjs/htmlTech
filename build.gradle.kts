@@ -27,7 +27,7 @@ apply {
 val mcVersion = "1.12.2"
 val forgeVersion = "14.23.5.2847"
 val mcFullVersion = "$mcVersion-$forgeVersion"
-val modVersion = "0.2.2-beta"
+val modVersion = "0.2.3-beta"
 version = "$mcVersion-$modVersion"
 group = "net.htmlcsjs.htmlTech"
 
@@ -65,16 +65,21 @@ repositories {
         name = "CraftTweaker Maven"
         setUrl("https://maven.blamejared.com/")
     }
+    maven {
+        setUrl("https://maven.cleanroommc.com")
+    }
 }
 
 dependencies {
     "deobfCompile"("mezz.jei:jei_1.12.2:+")
-    "deobfCompile"("curse.maven:ceu-557242:3941501")
+    "deobfCompile"("curse.maven:ceu-557242:4422409")
     "deobfCompile"("codechicken-lib-1-8:CodeChickenLib-1.12.2:3.2.3.358:universal")
     "deobfCompile"("codechicken:ChickenASM:1.12-1.0.2.9")
     "deobfCompile"("mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.23-16")
     "deobfCompile"("team.chisel.ctm:CTM:MC1.12.2-1.0.2.31")
     "deobfCompile"("CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.655")
+    "deobfCompile"("curse.maven:groovyscript-687577:4399621")
+    "deobfCompile"("zone.rong:mixinbooter:4.2") // fuck rong
 }
 
 configure<JavaPluginConvention> {
