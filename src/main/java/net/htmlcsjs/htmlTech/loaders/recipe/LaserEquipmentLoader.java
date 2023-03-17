@@ -1,10 +1,12 @@
 package net.htmlcsjs.htmlTech.loaders.recipe;
 
+import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.loaders.recipe.CraftingComponent;
+import net.htmlcsjs.htmlTech.HtmlTech;
 import net.htmlcsjs.htmlTech.common.HTConfig;
 import net.htmlcsjs.htmlTech.common.blocks.BlockHTCasing;
 import net.minecraft.item.ItemStack;
@@ -51,19 +53,33 @@ public class LaserEquipmentLoader {
 
         // Laser Collecting hatches
         for (int i = HTConfig.lasers.minLaserTier; i < mteLength; i++) {
-            ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                    .input(HULL[i])
-                    .input(lens, Glass)
-                    .inputs((ItemStack) CraftingComponent.SENSOR.getIngredient(i))
-                    .inputs((ItemStack) CraftingComponent.VOLTAGE_COIL.getIngredient(i))
-                    .input(wireGtQuadruple, ((UnificationEntry) CraftingComponent.CABLE_QUAD.getIngredient(i)).material, 4)
-                    .input(foil, ((UnificationEntry) CraftingComponent.PLATE.getIngredient(i)).material, 4)
-                    .input(circuit, ((UnificationEntry) CraftingComponent.CIRCUIT.getIngredient(i)).material)
-                    .fluidInputs(SodiumPotassium.getFluid(1000))
-                    .output(LASER_INPUT_HATCHES[i])
-                    .EUt(VA[i])
-                    .duration(100)
-                    .buildAndRegister();
+            ItemStack coil;
+            if (CraftingComponent.VOLTAGE_COIL.getIngredient(i) instanceof ItemStack) {
+                coil = (ItemStack) CraftingComponent.VOLTAGE_COIL.getIngredient(i);
+            } else if (CraftingComponent.VOLTAGE_COIL.getIngredient(i) instanceof MetaItem.MetaValueItem) {
+                coil = ((MetaItem<?>.MetaValueItem) CraftingComponent.VOLTAGE_COIL.getIngredient(i)).getStackForm();
+            } else {
+                HtmlTech.logger.warn(String.format("Cannot add recipe for %s hatch", VN[i]));
+                continue;
+            }
+            try {
+                Object sensor = !HT && i == UHV ? CraftingComponent.SENSOR.getIngredient(i - 1) : CraftingComponent.SENSOR.getIngredient(i);
+                ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                        .input(HULL[i])
+                        .input(lens, Glass)
+                        .inputs((ItemStack) sensor)
+                        .inputs(coil)
+                        .input(wireGtQuadruple, ((UnificationEntry) CraftingComponent.CABLE_QUAD.getIngredient(i)).material, 4)
+                        .input(foil, ((UnificationEntry) CraftingComponent.PLATE.getIngredient(i)).material, 4)
+                        .input(circuit, ((UnificationEntry) CraftingComponent.CIRCUIT.getIngredient(i)).material)
+                        .fluidInputs(SodiumPotassium.getFluid(1000))
+                        .output(LASER_INPUT_HATCHES[i])
+                        .EUt(VA[i])
+                        .duration(100)
+                        .buildAndRegister();
+            } catch (NullPointerException ignored) {
+                HtmlTech.logger.warn(String.format("Cannot add recipe for %s hatch", VN[i]));
+            }
         }
 
         // Laser Emitter hatch
@@ -91,7 +107,7 @@ public class LaserEquipmentLoader {
                 .input(circuit, MarkerMaterials.Tier.ZPM)
                 .input(circuit, MarkerMaterials.Tier.ZPM)
                 .fluidInputs(SodiumPotassium.getFluid(1000))
-                .fluidInputs(SolderingAlloy.getFluid(L*7))
+                .fluidInputs(SolderingAlloy.getFluid(L * 7))
                 .output(LASER_PROJECTOR)
                 //.reserchItem(LASER_OUTPUT_HATCH)
                 .EUt(VA[ZPM])
@@ -110,7 +126,7 @@ public class LaserEquipmentLoader {
                 .input(circuit, MarkerMaterials.Tier.ZPM)
                 .input(circuit, MarkerMaterials.Tier.ZPM)
                 .fluidInputs(SodiumPotassium.getFluid(1000))
-                .fluidInputs(SolderingAlloy.getFluid(L*7))
+                .fluidInputs(SolderingAlloy.getFluid(L * 7))
                 .output(LASER_COLLECTOR)
                 //.reserchItem(LASER_INPUT_HATCHES[LuV])
                 .EUt(VA[ZPM])
@@ -121,7 +137,7 @@ public class LaserEquipmentLoader {
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(GLASS_TUBE)
                 .input(lens, Glass)
-                .fluidInputs(Silver.getFluid(4*L))
+                .fluidInputs(Silver.getFluid(4 * L))
                 .output(EMPTY_LASER)
                 .EUt(VA[EV])
                 .duration(20)

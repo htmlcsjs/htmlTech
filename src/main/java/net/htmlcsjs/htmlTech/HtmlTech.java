@@ -45,8 +45,6 @@ public class HtmlTech {
     public void init(FMLInitializationEvent event) {
         proxy.init();
 
-        GTValues.HT = true;
-
         if (Loader.isModLoaded(HTValues.MODID_TOP)) {
             logger.info("TheOneProbe found. Enabling integration...");
             HTTOPCompatibility.registerCompatibility();
