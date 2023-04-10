@@ -92,11 +92,6 @@ public class LaserContainerHandler extends MTETrait implements ILaserContainer {
     }
 
     @Override
-    public int getNetworkID() {
-        return TraitNetworkIds.TRAIT_ID_ENERGY_CONTAINER;
-    }
-
-    @Override
     public NBTTagCompound serializeNBT() {
         NBTTagCompound compound = new NBTTagCompound();
         compound.setLong("LaserEnergyStored", laserEnergyStored);

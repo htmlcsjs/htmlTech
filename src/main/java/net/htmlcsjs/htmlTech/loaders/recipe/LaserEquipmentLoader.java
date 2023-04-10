@@ -4,6 +4,7 @@ import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.stack.UnificationEntry;
+import gregtech.common.ConfigHolder;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.loaders.recipe.CraftingComponent;
 import net.htmlcsjs.htmlTech.HtmlTech;
@@ -63,7 +64,7 @@ public class LaserEquipmentLoader {
                 continue;
             }
             try {
-                Object sensor = !HT && i == UHV ? CraftingComponent.SENSOR.getIngredient(i - 1) : CraftingComponent.SENSOR.getIngredient(i);
+                Object sensor = !ConfigHolder.machines.highTierContent && i == UHV ? CraftingComponent.SENSOR.getIngredient(i - 1) : CraftingComponent.SENSOR.getIngredient(i);
                 ASSEMBLY_LINE_RECIPES.recipeBuilder()
                         .input(HULL[i])
                         .input(lens, Glass)

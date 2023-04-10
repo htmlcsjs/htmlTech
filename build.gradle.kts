@@ -1,5 +1,7 @@
 import net.minecraftforge.gradle.user.UserBaseExtension
 
+// TODO: rewrite gradle to use fg5
+
 buildscript {
     repositories {
         mavenCentral()
@@ -68,17 +70,22 @@ repositories {
     maven {
         setUrl("https://maven.cleanroommc.com")
     }
+    maven {
+        name = "maverinth"
+        setUrl("https://api.modrinth.com/maven")
+    }
 }
 
 dependencies {
     "deobfCompile"("mezz.jei:jei_1.12.2:+")
-    "deobfCompile"("curse.maven:ceu-557242:4422409")
+    "deobfCompile"("maven.modrinth:gregtech-ce-unofficial:2.6.1") // 2.6.1
     "deobfCompile"("codechicken-lib-1-8:CodeChickenLib-1.12.2:3.2.3.358:universal")
     "deobfCompile"("codechicken:ChickenASM:1.12-1.0.2.9")
     "deobfCompile"("mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.23-16")
     "deobfCompile"("team.chisel.ctm:CTM:MC1.12.2-1.0.2.31")
     "deobfCompile"("CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.655")
-    "deobfCompile"("curse.maven:groovyscript-687577:4399621")
+//    "deobfCompile"("curse.maven:groovyscript-687577:4399621")
+    "provided"(files("libs/groovyscript-0.4.0.jar"))
     "deobfCompile"("zone.rong:mixinbooter:4.2") // fuck rong
 }
 

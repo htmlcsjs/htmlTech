@@ -1,6 +1,7 @@
 package net.htmlcsjs.htmlTech.api;
 
 import gregtech.api.GTValues;
+import gregtech.common.ConfigHolder;
 
 public class HTValues {
 
@@ -25,5 +26,5 @@ public class HTValues {
     /**
      * Length of MTE arrys depending on if GTValues.HT is set
      */
-    public static final int mteLength = GTValues.HT ? GTValues.V.length - 1 : Math.min(GTValues.V.length - 1, GTValues.UV + 1);
+    public static final int mteLength = ConfigHolder.machines.highTierContent ? GTValues.V.length - 1 : Math.min(GTValues.V.length - 1, GTValues.UV + 1);
 }
